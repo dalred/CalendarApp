@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser
 
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, email, password=None, **other_fields):
+    def create_user(self, email, password=None, **extra_fields):
         """
         Creates and saves a User with the given email, date of
         birth and password.
@@ -14,25 +14,26 @@ class MyUserManager(BaseUserManager):
 
         user = self.model(
             email=self.normalize_email(email),
-            **other_fields
+            **extra_fields
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password=None, **other_fields):
+    def create_superuser(self, email, password=None, **extra_fields):
         """
         Creates and saves a superuser with the given email, date of
         birth and password.
         """
-        user = self.create_user(
+        extra_fields.setdefault('role', 'admin')
+        # extra_fields.setdefault('is_superuser', True)
+        # extra_fields.setdefault('is_active', True)
+
+        return self.create_user(
             email,
             password=password,
-            role='admin',
-            **other_fields
+            **extra_fields
         )
-        user.save(using=self._db)
-        return user
 
 
 class User(AbstractBaseUser):
@@ -74,7 +75,7 @@ class User(AbstractBaseUser):
     def is_staff(self):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
-        return self.role == 'admin'
+        return self.role == self.admin
 
     def has_perm(self, perm, obj=None):
         return self.is_admin
@@ -84,8 +85,12 @@ class User(AbstractBaseUser):
 
     @property
     def is_admin(self):
-        return self.role == 'admin'
+        return self.role == self.admin
 
     @property
     def is_user(self):
         return self.role == self.user
+
+    @property
+    def username(self):
+        return self.email
