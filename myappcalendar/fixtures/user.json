@@ -1,0 +1,145 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "email": "test@teamdev.ru",
+      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "last_login": "2022-02-20 13:34:16.332479+03:00",
+      "role": "user",
+      "first_name": "Иван",
+      "last_name": "Иванов",
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "email": "test2@teamdev.ru",
+      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "last_login": "2022-02-20 13:34:16.332479+03:00",
+      "role": "user",
+      "first_name": "Петр",
+      "last_name": "Петров",
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "email": "test3@teamdev.ru",
+      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "last_login": "2022-02-20 13:34:16.332479+03:00",
+      "role": "user",
+      "first_name": "Петр",
+      "last_name": "Петров",
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "email": "test4@teamdev.ru",
+      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "last_login": "2022-02-20 13:34:16.332479+03:00",
+      "role": "user",
+      "first_name": "Сергей",
+      "last_name": "Стародубцев",
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "email": "test5@teamdev.ru",
+      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "last_login": "2022-02-20 13:34:16.332479+03:00",
+      "role": "user",
+      "first_name": "Сергей",
+      "last_name": "Стародубцев",
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "email": "test6@teamdev.ru",
+      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "last_login": "2022-02-20 13:34:16.332479+03:00",
+      "role": "user",
+      "first_name": "Сергей",
+      "last_name": "Стародубцев",
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+      "email": "admin@teamdev.ru",
+      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "last_login": "2022-02-20 13:34:16.332479+03:00",
+      "role": "admin",
+      "first_name": "Админ",
+      "last_name": "Петров",
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+      "email": "test8@teamdev.ru",
+      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "last_login": "2022-02-20 13:34:16.332479+03:00",
+      "role": "user",
+      "first_name": "Сергей",
+      "last_name": "Стародубцев",
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 9,
+    "fields": {
+      "email": "test9@teamdev.ru",
+      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "last_login": "2022-02-20 13:34:16.332479+03:00",
+      "role": "user",
+      "first_name": "Сергей",
+      "last_name": "Стародубцев",
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 10,
+    "fields": {
+      "email": "test10@teamdev.ru",
+      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "last_login": "2022-02-20 13:34:16.332479+03:00",
+      "role": "user",
+      "first_name": "Сергей",
+      "last_name": "Стародубцев",
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 11,
+    "fields": {
+      "email": "dalred@mail.ru",
+      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "last_login": "2022-02-20 13:34:16.332479+03:00",
+      "role": "admin",
+      "first_name": "Даниил",
+      "last_name": "Кузьмин",
+      "is_active": true
+    }
+  }
+]
