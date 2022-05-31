@@ -1,6 +1,7 @@
 FROM python:3.8-slim
 WORKDIR /code
 COPY ./myappcalendar/ .
+COPY django-package django-package
 
 RUN apt-get update \
     && apt-get -y install libpq-dev gcc \
