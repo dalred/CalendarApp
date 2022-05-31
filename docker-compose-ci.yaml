@@ -25,7 +25,7 @@ services:
         python manage.py runserver 0.0.0.0:8000 --noreload
     #command: /bin/sh -c "runserver.sh"
   db:
-    container_name: postgres
+    container_name: postgres_$NAME_APP
     image: postgres:12.4-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data
