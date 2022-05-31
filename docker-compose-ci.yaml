@@ -6,8 +6,8 @@ services:
     image: dalred/$NAME_APP:$GITHUB_REF_NAME-version-$GITHUB_RUN_ID
     ports:
       - "8000:8000"
-    volumes:
-      - ./$NAME_APP:/code/
+#    volumes:
+#      - ./$NAME_APP:/code/
     depends_on:
       db:
         condition: service_healthy
