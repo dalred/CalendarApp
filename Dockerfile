@@ -1,6 +1,7 @@
 FROM python:3.8-slim
 WORKDIR /code
-COPY . .
+COPY ./myappcalendar/ .
+
 RUN apt-get update \
     && apt-get -y install libpq-dev gcc \
     && apt-get autoclean && apt-get autoremove \
