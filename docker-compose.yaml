@@ -1,5 +1,28 @@
 version: "3.9"
 services:
+  api:
+    container_name: $NAME_APP
+    image: dalred/calendarapp:main-version-2413197089
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    command:
+      - bash
+      - -c
+      - |
+        python manage.py migrate --check
+        status=$$?
+        if [[ $$status -eq 0 ]]
+          then echo -e '\033[0;33m'"Migrations are not detected."
+        else
+          echo  -e '\033[0;31m'"Unapplied migrations are detected!"
+          python manage.py makemigrations
+          python manage.py migrate
+          python manage.py loadall
+        fi
+        python manage.py runserver 0.0.0.0:8000 --noreload
   db:
     container_name: calendar_postgres
     image: postgres:12.4-alpine
