@@ -1,5 +1,39 @@
 version: "3.9"
 services:
+  api:
+    #myappcalendar
+    container_name: api
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./myappcalendar:/code/
+    depends_on:
+      db:
+        condition: service_healthy
+    command:
+      - bash
+      - -c
+      - |
+        python manage.py migrate --check
+        status=$$?
+        if [[ $$status -eq 0 ]]
+          then echo -e '\033[0;33m'"Migrations are not detected."
+        else
+          echo  -e '\033[0;31m'"Unapplied migrations are detected!"
+          python manage.py makemigrations
+          python manage.py migrate
+          python manage.py loadall
+        fi
+        python manage.py runserver 0.0.0.0:8000
+    #command: /bin/sh -c "runserver.sh"
+  frontend:
+    image: sermalenk/skypro-front:lesson-38
+    ports:
+      - "80:80"
+    depends_on:
+      - api
   db:
     container_name: calendar_postgres
     image: postgres:12.4-alpine
