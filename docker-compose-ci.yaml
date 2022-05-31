@@ -4,7 +4,7 @@ services:
     container_name: $NAME_APP
     image: dalred/$NAME_APP:$GITHUB_REF_NAME-version-$GITHUB_RUN_ID
     ports:
-      - "8000:8000"
+      - "80:80"
     depends_on:
       db:
         condition: service_healthy
@@ -22,7 +22,7 @@ services:
           python manage.py migrate
           python manage.py loadall
         fi
-        python manage.py runserver 0.0.0.0:8000 --noreload
+        python manage.py runserver 0.0.0.0:80 --noreload
     #command: /bin/sh -c "runserver.sh"
   db:
     container_name: postgres_$NAME_APP
