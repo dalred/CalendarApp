@@ -44,7 +44,7 @@ jobs:
       - name: render configs
         run: |
           mkdir deploy
-          cat docker-compose-ci.yaml | envsubst '$DB_NAME,$DB_USER,$NAME_APP,$GITHUB_RUN_ID, $GITHUB_REF_NAME' > deploy/docker-compose.yaml
+          cat docker-compose-ci.yaml | envsubst '$DB_PASSWORD,$DB_NAME,$DB_USER,$NAME_APP,$GITHUB_RUN_ID, $GITHUB_REF_NAME' > deploy/docker-compose.yaml
       - name: clone files to server
         uses: appleboy/scp-action@master
         with:
