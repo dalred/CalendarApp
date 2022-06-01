@@ -10,4 +10,5 @@ RUN apt-get update \
     && pip install poetry \
     && poetry config virtualenvs.create false
 
+RUN chmod +x runserver.sh
 RUN cd django-package && poetry install --no-dev
