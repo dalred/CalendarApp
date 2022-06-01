@@ -11,22 +11,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    command:
-      - bash
-      - -c
-      - |
-        python manage.py migrate --check
-        status=$$?
-        if [[ $$status -eq 0 ]]
-          then echo -e '\033[0;33m'"Migrations are not detected."
-        else
-          echo  -e '\033[0;31m'"Unapplied migrations are detected!"
-          python manage.py makemigrations
-          python manage.py migrate
-          python manage.py loadall
-        fi
-        python manage.py runserver 0.0.0.0:8000 --noreload
-    #command: /bin/sh -c "runserver.sh"
+    command: /bin/bash -c "./runserver.sh"
   frontend:
     image: sermalenk/skypro-front:lesson-38
     ports:

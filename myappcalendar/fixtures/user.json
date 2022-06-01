@@ -3,6 +3,7 @@
     "model": "users.user",
     "pk": 1,
     "fields": {
+      "username": "test@teamdev.ru",
       "email": "test@teamdev.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
@@ -16,6 +17,7 @@
     "model": "users.user",
     "pk": 2,
     "fields": {
+      "username": "test2@teamdev.ru",
       "email": "test2@teamdev.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
@@ -29,6 +31,7 @@
     "model": "users.user",
     "pk": 3,
     "fields": {
+      "username": "test3@teamdev.ru",
       "email": "test3@teamdev.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
@@ -42,6 +45,7 @@
     "model": "users.user",
     "pk": 4,
     "fields": {
+      "username": "test4@teamdev.ru",
       "email": "test4@teamdev.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
@@ -55,6 +59,7 @@
     "model": "users.user",
     "pk": 5,
     "fields": {
+      "username": "test5@teamdev.ru",
       "email": "test5@teamdev.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
@@ -68,6 +73,7 @@
     "model": "users.user",
     "pk": 6,
     "fields": {
+      "username": "test6@teamdev.ru",
       "email": "test6@teamdev.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
@@ -81,6 +87,7 @@
     "model": "users.user",
     "pk": 7,
     "fields": {
+      "username": "admin@teamdev.ru",
       "email": "admin@teamdev.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
@@ -94,6 +101,7 @@
     "model": "users.user",
     "pk": 8,
     "fields": {
+      "username": "test8@teamdev.ru",
       "email": "test8@teamdev.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
@@ -107,6 +115,7 @@
     "model": "users.user",
     "pk": 9,
     "fields": {
+      "username": "test9@teamdev.ru",
       "email": "test9@teamdev.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
@@ -120,6 +129,7 @@
     "model": "users.user",
     "pk": 10,
     "fields": {
+      "username": "test10@teamdev.ru",
       "email": "test10@teamdev.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
@@ -133,7 +143,8 @@
     "model": "users.user",
     "pk": 11,
     "fields": {
-      "email": "dalred@mail.ru",
+      "username": "dalred@mail.ru",
+      "email": "dalred@teamdev.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "admin",

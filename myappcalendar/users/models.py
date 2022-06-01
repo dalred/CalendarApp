@@ -4,23 +4,23 @@ from django.contrib.auth.models import AbstractBaseUser
 
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, username, password=None, **extra_fields):
         """
         Creates and saves a User with the given email, date of
         birth and password.
         """
-        if not email:
-            raise ValueError('Users must have an email address')
+        if not username:
+            raise ValueError('Users must have an username address')
 
         user = self.model(
-            email=self.normalize_email(email),
+            username=username,
             **extra_fields
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password=None, **extra_fields):
+    def create_superuser(self, username, password=None, **extra_fields):
         """
         Creates and saves a superuser with the given email, date of
         birth and password.
@@ -30,7 +30,7 @@ class MyUserManager(BaseUserManager):
         # extra_fields.setdefault('is_active', True)
 
         return self.create_user(
-            email,
+            username,
             password=password,
             **extra_fields
         )
@@ -45,6 +45,7 @@ class User(AbstractBaseUser):
         (moderator, 'moderator'),
         (admin, 'admin')
     ]
+    username = models.CharField(max_length=50, default='Unknown', unique=True)
     first_name = models.CharField(max_length=20, default='Unknown')
     last_name = models.CharField(max_length=20, default='Unknown')
     role = models.CharField(max_length=10, default='user', choices=ROLE, null=True)
@@ -57,7 +58,7 @@ class User(AbstractBaseUser):
         ordering = ("id",)
 
     # эта константа определяет поле для логина пользователя
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
 
     # также для работы модели пользователя должен быть переопределен
     # менеджер объектов
@@ -91,6 +92,6 @@ class User(AbstractBaseUser):
     def is_user(self):
         return self.role == self.user
 
-    @property
-    def username(self):
-        return self.email
+    # @property
+    # def username(self):
+    #     return self.email
