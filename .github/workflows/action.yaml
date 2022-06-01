@@ -20,6 +20,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Echo gitHubname and repo
         run: echo ${{ github.repository }}/${{ github.ref_name }}/${{secrets.NAME_APP}}
+      - name: 'Create env file'
+        run: |
+            touch .env
+            echo test=test >> myappcalendar/.env
       - name: render settings.py
         run: |
           cat docker_ci_settings.py | envsubst > myappcalendar/myappcalendar/settings.py
