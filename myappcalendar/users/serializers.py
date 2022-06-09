@@ -18,9 +18,10 @@ class UserCurrentSerializer(serializers.ModelSerializer):
 
 class UserCreateSerializer(serializers.ModelSerializer):
     """
-    Uses extra user model's fields in POST /users/ endpoint.
+    Uses extra user model's fields in POST /signup/ endpoint.
     """
     # but is not included when serializing the representation.
+    username = serializers.CharField(required=True)
     password = serializers.CharField(write_only=True)
     password_repeat = serializers.CharField(write_only=True)
 

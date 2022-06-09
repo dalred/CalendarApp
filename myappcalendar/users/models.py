@@ -1,7 +1,6 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
-from django.contrib.auth.hashers import make_password
 
 
 class MyUserManager(BaseUserManager):
@@ -25,8 +24,7 @@ class MyUserManager(BaseUserManager):
 
     def create_superuser(self, username, password=None, **extra_fields):
         """
-        Creates and saves a superuser with the given email, date of
-        birth and password.
+        Creates and saves a superuser with the given email and password.
         """
         extra_fields.setdefault('role', 'admin')
         # extra_fields.setdefault('is_superuser', True)
@@ -67,8 +65,8 @@ class User(AbstractBaseUser):
     # менеджер объектов
     objects = MyUserManager()
 
-    # эта константа содержит список с полями, которые необходимо заполнить при создании пользователя A list of the
-    # field names that will be prompted for when creating a user via the createsuperuser management command.
+    # эта константа содержит список с полями, которые необходимо заполнить при создании createsuperuser
+    #  A list of the field names that will be prompted for when creating a user via the createsuperuser management command.
     REQUIRED_FIELDS = []
 
     @property

@@ -69,5 +69,5 @@ jobs:
           script: |
             echo homepath $HOME
             cd ${{secrets.NAME_APP}}
-            echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose down
+            echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose down --rmi local -v
             echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose up -d
