@@ -1,11 +1,11 @@
 from django.contrib.auth import logout as logout_user
 from rest_framework import status
 from django.contrib.auth import get_user_model
-
+from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from django.core.handlers.wsgi import WSGIRequest
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 from users.serializers import UserListSerializer, UserCreateSerializer, UserCurrentSerializer, ChangePasswordSerializer
 
@@ -64,7 +64,7 @@ class UserRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
 
     def delete(self, request, *args, **kwargs):
         logout_user(request)
-        return JsonResponse(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class UpdatePassword(UpdateAPIView):
