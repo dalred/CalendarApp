@@ -38,9 +38,6 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged-in/'
 SOCIAL_AUTH_BACKEND_ERROR_URL = '/login-error/'
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 SOCIAL_AUTH_IMMUTABLE_USER_FIELDS = ['username', 'last_name', 'email', 'first_name', ]
-# SOCIAL_AUTH_PIPELINE = (
-#     'social_core.pipeline.user.user_details',
-# )
 SOCIAL_AUTH_FIELDS_STORED_IN_SESSION = ['state']
 SESSION_COOKIE_SECURE = False
 SOCIAL_AUTH_PIPELINE = (
