@@ -11,6 +11,9 @@ env:
   DB_NAME: ${{ secrets.DB_NAME }}
   SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
   NAME_APP: ${{secrets.NAME_APP}}
+  VK_OAUTH2_KEY : ${{secrets.VK_OAUTH2_KEY}}
+  VK_OAUTH2_SECRET : ${{secrets.VK_OAUTH2_SECRET}}
+
 
 jobs:
   build_and_push:

@@ -28,8 +28,8 @@ ALLOWED_HOSTS = ['*']
 
 # VK
 SOCIAL_AUTH_JSONFIELD_ENABLED = True
-SOCIAL_AUTH_VK_OAUTH2_KEY = '8189182'
-SOCIAL_AUTH_VK_OAUTH2_SECRET = '57WclMNmmskdQwQiKt0b'
+SOCIAL_AUTH_VK_OAUTH2_KEY = "$VK_OAUTH2_KEY"
+SOCIAL_AUTH_VK_OAUTH2_SECRET = "$VK_OAUTH2_SECRET"
 
 LOGIN_REDIRECT_URL = '/core/profile/'
 LOGIN_ERROR_URL = 'core/profile/error/'
@@ -38,9 +38,9 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged-in/'
 SOCIAL_AUTH_BACKEND_ERROR_URL = '/login-error/'
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 SOCIAL_AUTH_IMMUTABLE_USER_FIELDS = ['username', 'last_name', 'email', 'first_name', ]
-SOCIAL_AUTH_PIPELINE = (
-    'social_core.pipeline.user.user_details',
-)
+# SOCIAL_AUTH_PIPELINE = (
+#     'social_core.pipeline.user.user_details',
+# )
 # Application definition
 
 AUTHENTICATION_BACKENDS = (

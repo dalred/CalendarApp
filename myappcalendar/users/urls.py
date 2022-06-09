@@ -10,8 +10,8 @@ import users
 
 urlpatterns = [
     path('users/', users.views.UserListAPIView.as_view()),
-    path('profile/', csrf_exempt(users.views.UserRetrieveUpdateDestroy.as_view())),
-    path('update_password/', csrf_exempt(users.views.UpdatePassword.as_view())),
+    re_path(r'^profile/?$', csrf_exempt(users.views.UserRetrieveUpdateDestroy.as_view())),
+    re_path(r'^update_password/?$', csrf_exempt(users.views.UpdatePassword.as_view())),
     # re_path(r'^profile/test/?$', users.views.UserRetrieveUpdateView.as_view()),
     # re_path(r'profile/<int:pk>', users.views.UserRetrieveUpdateView.as_view()),
     re_path(r'^signup/?$', users.views.UserCreate.as_view()),

@@ -38,9 +38,11 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged-in/'
 SOCIAL_AUTH_BACKEND_ERROR_URL = '/login-error/'
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 SOCIAL_AUTH_IMMUTABLE_USER_FIELDS = ['username', 'last_name', 'email', 'first_name', ]
-SOCIAL_AUTH_PIPELINE = (
-    'social_core.pipeline.user.user_details',
-)
+# SOCIAL_AUTH_PIPELINE = (
+#     'social_core.pipeline.user.user_details',
+# )
+SOCIAL_AUTH_FIELDS_STORED_IN_SESSION = ['state']
+SESSION_COOKIE_SECURE = False
 # Application definition
 
 AUTHENTICATION_BACKENDS = (
@@ -132,7 +134,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": os.environ.get("POSTGRES_NAME", "calendar"),
-        "HOST": os.environ.get("DB_HOST", 'localhost'),
+        "HOST": os.environ.get("DB_HOST", 'db'),
         "PORT": os.environ.get("DB_PORT", "5432"),
         "USER": os.environ.get("DB_USER", "djangoappuserdb"),
         "PASSWORD": os.environ.get("DB_PASSWORD", "djangoappuserdb"),
