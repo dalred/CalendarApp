@@ -144,7 +144,7 @@
     "pk": 11,
     "fields": {
       "username": "dalred@mail.ru",
-      "email": "dalred@teamdev.ru",
+      "email": "dalred@mail.ru",
       "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "admin",
