@@ -1,6 +1,7 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.hashers import make_password
 
 
 class MyUserManager(BaseUserManager):
@@ -10,12 +11,14 @@ class MyUserManager(BaseUserManager):
         birth and password.
         """
         if not username:
-            raise ValueError('Users must have an username address')
+            raise ValueError('Users must have an username')
 
         user = self.model(
             username=username,
             **extra_fields
         )
+
+        # taking care of the password hashing
         user.set_password(password)
         user.save(using=self._db)
         return user

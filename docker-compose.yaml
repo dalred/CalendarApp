@@ -13,7 +13,7 @@ services:
       db:
         condition: service_healthy
     command: /bin/bash -c "./runserver.sh"
-    #$$
+#    $$
 #    command:
 #      - bash
 #      - -c

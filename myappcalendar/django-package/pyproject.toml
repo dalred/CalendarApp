@@ -16,6 +16,8 @@ python-dotenv = "^0.20.0"
 djangorestframework-simplejwt = "4.8.0"
 django-filter = "^21.1"
 pytest-django = "^4.5.2"
+social-auth-app-django = "^5.0.0"
+python-social-auth = "^0.3.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
