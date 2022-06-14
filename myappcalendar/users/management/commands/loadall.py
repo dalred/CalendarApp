@@ -7,9 +7,9 @@ from django.core.management import call_command
 class Command(BaseCommand):
     help = "Loads fixtures from fixtures dir"
     fixtures_dir = "fixtures"
-    loaddata_command = "loaddata"
+    loaddata_command = "loadall"
     filenames = [
-        "user"
+        "user", "goals"
     ]
 
     def handle(self, *args, **options):

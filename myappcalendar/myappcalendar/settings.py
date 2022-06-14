@@ -74,7 +74,8 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'django_filters',
     'login',
-    'social_django'
+    'social_django',
+    'goals',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -144,7 +145,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": os.environ.get("POSTGRES_NAME", "calendar"),
-        "HOST": os.environ.get("DB_HOST", 'db'),
+        "HOST": os.environ.get("DB_HOST", 'localhost'),
         "PORT": os.environ.get("DB_PORT", "5432"),
         "USER": os.environ.get("DB_USER", "djangoappuserdb"),
         "PASSWORD": os.environ.get("DB_PASSWORD", "djangoappuserdb"),
@@ -174,7 +175,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "ru"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Moscow"
 
 USE_I18N = True
 

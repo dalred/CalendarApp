@@ -1,18 +1,18 @@
 version: "3.9"
 services:
-  api:
-    #myappcalendar
-    container_name: api
-    build:
-      context: ./myappcalendar
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./myappcalendar:/code/
-    depends_on:
-      db:
-        condition: service_healthy
-    command: /bin/bash -c "./runserver.sh"
+#  api:
+#    #myappcalendar
+#    container_name: api
+#    build:
+#      context: ./myappcalendar
+#    ports:
+#      - "8000:8000"
+#    volumes:
+#      - ./myappcalendar:/code/
+#    depends_on:
+#      db:
+#        condition: service_healthy
+#    command: /bin/bash -c "./runserver.sh"
 #    $$
 #    command:
 #      - bash
@@ -30,12 +30,12 @@ services:
 #        fi
 #        python manage.py runserver 0.0.0.0:8000
 
-  frontend:
-    image: sermalenk/skypro-front:lesson-38
-    ports:
-      - "80:80"
-    depends_on:
-      - api
+#  frontend:
+#    image: sermalenk/skypro-front:lesson-38
+#    ports:
+#      - "80:80"
+#    depends_on:
+#      - api
   db:
     container_name: calendar_postgres
     image: postgres:12.4-alpine
