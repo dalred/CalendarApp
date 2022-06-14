@@ -1,0 +1,17 @@
+[
+  {
+    "model": "goals.Goal",
+    "pk": 1,
+    "fields": {
+      "title": "Цель 1",
+      "user": 1,
+      "description": "Описание тестовой цели",
+      "due_date": "2022-06-25T09:29:44.056780Z",
+      "status": 1,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  }
+]

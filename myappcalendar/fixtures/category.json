@@ -1,0 +1,12 @@
+[
+  {
+    "model": "goals.GoalCategory",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "title": "test_category1",
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  }
+]
