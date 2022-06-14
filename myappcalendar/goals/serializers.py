@@ -31,11 +31,11 @@ class GoalCreateSerializer(serializers.ModelSerializer):
 
     # Соединяемся по SlugField не добавляем метод get_or_create так в данной задаче
     # Мы выбираем только из существующих категорий.
-    category = serializers.SlugRelatedField(many=False,
-                                            required=False,
-                                            slug_field='id',
-                                            queryset=GoalCategory.objects.all()
-                                            )
+    # category = serializers.SlugRelatedField(many=False,
+    #                                         required=False,
+    #                                         slug_field='id',
+    #                                         queryset=GoalCategory.objects.all()
+    #                                         )
 
     class Meta:
         model = Goal
@@ -68,16 +68,17 @@ class GoalCommentCreateSerializer(serializers.ModelSerializer):
 
     # Соединяемся по SlugField не добавляем метод get_or_create так в данной задаче
     # Мы выбираем только из существующих категорий.
-    goal = serializers.SlugRelatedField(many=False,
-                                            required=False,
-                                            slug_field='id',
-                                            queryset=Goal.objects.all()
-                                            )
+    # goal = serializers.SlugRelatedField(many=False,
+    #                                         required=False,
+    #                                         slug_field='id',
+    #                                         queryset=Goal.objects.all()
+    #                                         )
 
     class Meta:
         model = GoalComment
         read_only_fields = ("id", "created", "updated", "user")
         fields = "__all__"
+
 
 class GoalCommentListSerializer(serializers.ModelSerializer):
     # Позволяет поймать текущего пользователя

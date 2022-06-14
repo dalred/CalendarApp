@@ -10,8 +10,8 @@ class DatesModelMixin(models.Model):
     class Meta:
         abstract = True  # Помечаем класс как абстрактный – для него не будет таблички в БД
 
-    created = models.DateTimeField(verbose_name="Дата создания")
-    updated = models.DateTimeField(verbose_name="Дата последнего обновления")
+    created = models.DateTimeField(verbose_name="Дата создания", default=timezone.now)
+    updated = models.DateTimeField(verbose_name="Дата последнего обновления", default=timezone.now)
 
     def save(self, *args, **kwargs):
         if not self.id:  # Когда модель только создается – у нее нет id
