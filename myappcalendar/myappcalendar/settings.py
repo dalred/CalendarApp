@@ -9,13 +9,15 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import os
+import os, dotenv
 from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# dotenv
+dotenv.load_dotenv(f'{BASE_DIR}/.env')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -28,8 +30,8 @@ ALLOWED_HOSTS = ['*']
 
 # VK
 SOCIAL_AUTH_JSONFIELD_ENABLED = True
-SOCIAL_AUTH_VK_OAUTH2_KEY = "$VK_OAUTH2_KEY"
-SOCIAL_AUTH_VK_OAUTH2_SECRET = "$VK_OAUTH2_SECRET"
+SOCIAL_AUTH_VK_OAUTH2_KEY = os.getenv('VK_OAUTH2_KEY')
+SOCIAL_AUTH_VK_OAUTH2_SECRET = os.getenv('VK_OAUTH2_SECRET')
 
 LOGIN_REDIRECT_URL = '/core/profile/'
 LOGIN_ERROR_URL = 'core/profile/error/'
@@ -40,6 +42,7 @@ SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 SOCIAL_AUTH_IMMUTABLE_USER_FIELDS = ['username', 'last_name', 'email', 'first_name', ]
 SOCIAL_AUTH_FIELDS_STORED_IN_SESSION = ['state']
 SESSION_COOKIE_SECURE = False
+
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
     'social_core.pipeline.social_auth.social_uid',
@@ -57,7 +60,7 @@ SOCIAL_AUTH_PIPELINE = (
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.vk.VKOAuth2',  # бекенд авторизации через ВКонтакте
     'django.contrib.auth.backends.ModelBackend',
-# бекенд классической аутентификации, чтобы работала авторизация через обычный логин и пароль
+    # бекенд классической аутентификации, чтобы работала авторизация через обычный логин и пароль
 )
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -96,7 +99,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.TokenAuthentication',
         # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-        #'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
 
     ],
@@ -137,21 +140,20 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myappcalendar.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.environ.get("POSTGRES_NAME", "$DB_NAME"),
-        # or service name db https://docs.docker.com/samples/django/
-        "HOST": os.environ.get("DB_HOST", "postgres_$NAME_APP"),
+        "NAME": os.getenv("POSTGRES_NAME"),
+        "HOST": os.getenv("DB_HOST"),
         "PORT": os.environ.get("DB_PORT", "5432"),
-        "USER": os.environ.get("DB_USER", "$DB_USER"),
-        "PASSWORD": os.environ.get("DB_PASSWORD", "$DB_PASSWORD"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
     },
 }
+
 
 
 # Password validation
@@ -172,7 +174,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -183,7 +184,6 @@ TIME_ZONE = "Europe/Moscow"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
