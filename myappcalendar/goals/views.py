@@ -123,7 +123,7 @@ class GoalCommentListView(ListAPIView):
         filters.SearchFilter,
     ]
     filterset_class = GoalCommentFilter
-    #search_fields = ["=goal__id"]
+    # search_fields = ["=goal__id"]
     filterset_fields = ['goal']
     # С этим дерьмом не работает.&search=%5Bobject%20Object%5D& search_fields
     pagination_class = LimitOffsetPagination
@@ -135,6 +135,11 @@ class GoalCommentListView(ListAPIView):
         return GoalComment.objects.filter(
             Q(user=self.request.user)
         )
+    # Второй вариант если бы пользователя не было б в комментариях
+    # def get_queryset(self):
+    #     return GoalComment.objects.filter(
+    #         Q(goal__user=self.request.user)
+    #     )
 
 
 class GoalCommentView(RetrieveUpdateDestroyAPIView):
