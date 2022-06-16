@@ -1,7 +1,7 @@
 # Действия с пользователями
 
-* [Регистрация пользователя](#регистрация-пользователя) ![flutter](https://img.shields.io/badge/anonymous-brightgreen)
-* [Авторизация пользователя](#авторизация-пользователя) ![flutter](https://img.shields.io/badge/anonymous-brightgreen)
+* [Регистрация пользователя](#регистрация-пользователя) ![flutter](https://img.shields.io/badge/anonymous-blueviolet)
+* [Авторизация пользователя](#авторизация-пользователя) ![flutter](https://img.shields.io/badge/anonymous-blueviolet)
 * [Получение информации о пользователе](#получение-информации-о-пользователе) ![flutter](https://img.shields.io/badge/user-green)
 * [Изменение информации о пользователе](#изменение-информации-о-пользователе) ![flutter](https://img.shields.io/badge/user-green)
 * [Изменение пароля пользователя](#изменение-пароля-пользователя) ![flutter](https://img.shields.io/badge/user-green)
