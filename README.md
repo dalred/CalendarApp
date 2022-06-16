@@ -7,6 +7,10 @@
 
 ## Содержание
 
+![flutter](https://img.shields.io/badge/Cайт-important) http://dalforcustomers.ga
+
+![flutter](https://img.shields.io/badge/Swagger-important) http://dalforcustomers.ga:8000/docs
+
 Пометки в документации:
 
 ![flutter](https://img.shields.io/badge/anonymous-blueviolet) – актуально для анонимных запросов, не требует авторизации.
