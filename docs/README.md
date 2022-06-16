@@ -1,7 +1,7 @@
-#Действия с пользователями
+# Действия с пользователями
 
 * [Регистрация пользователя](#регистрация-пользователя) ![flutter](https://img.shields.io/badge/anonymous-brightgreen)
-* [Авторизация пользователя](#получение-авторизации-пользователя) ![flutter](https://img.shields.io/badge/anonymous-brightgreen)
+* [Авторизация пользователя](#авторизация-пользователя) ![flutter](https://img.shields.io/badge/anonymous-brightgreen)
 * [Получение информации о пользователе](#получение-информации-о-пользователе) ![flutter](https://img.shields.io/badge/user-brightgreen)
 
 
@@ -30,7 +30,7 @@
 HTTP Status 201 Created
 ```
 
-## Получение авторизации пользователя
+## Авторизация пользователя
 
 Приложению необходимо сделать сервер-сервер запрос POST `/core/login/`.
 В теле запроса необходимо передать обязательные параметры: `username`, `password`.
