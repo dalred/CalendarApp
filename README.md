@@ -9,13 +9,13 @@
 
 Пометки в документации:
 
-![flutter](https://img.shields.io/badge/anonymous-brightgreen) – актуально для анонимных запросов, не требует авторизации.
+![flutter](https://img.shields.io/badge/anonymous-blueviolet) – актуально для анонимных запросов, не требует авторизации.
 
-![flutter](https://img.shields.io/badge/user-brightgreen) – требует авторизацию пользователя.
+![flutter](https://img.shields.io/badge/user-green) – требует авторизацию пользователя.
 
 #### Общая информация
 
-* [Действия с пользователями](docs/users.md) ![flutter](https://img.shields.io/badge/anonymous-brightgreen)
+* [Действия с пользователями](docs/users.md) ![flutter](https://img.shields.io/badge/anonymous-blueviolet)
 ![flutter](https://img.shields.io/badge/user-green)
 * [Действия с категориями](docs/goals.md) 
 ![flutter](https://img.shields.io/badge/user-green)
