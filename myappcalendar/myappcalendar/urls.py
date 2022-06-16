@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
+handler404 = 'myappcalendar.views.custom_page_not_found_view'
 
 from users.views import root
 

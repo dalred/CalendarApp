@@ -4,7 +4,7 @@ from rest_framework import permissions
 from rest_framework import filters
 from rest_framework.pagination import LimitOffsetPagination
 from django.db.models import Q
-from filters import GoalDateFilter, GoalCommentFilter
+from goals.filters import GoalDateFilter, GoalCommentFilter
 from goals.models import GoalCategory, Goal, Status, GoalComment
 from goals.serializers import GoalCatCreateSerializer, GoalCategorySerializer, GoalCreateSerializer, GoalListSerializer, \
     GoalCommentCreateSerializer, GoalCommentListSerializer

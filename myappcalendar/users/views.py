@@ -1,6 +1,7 @@
 import json
 
 from django.contrib.auth import logout as logout_user
+from django.shortcuts import render
 from rest_framework import status
 from django.contrib.auth import get_user_model
 from rest_framework.response import Response
@@ -16,7 +17,6 @@ def root(request: WSGIRequest) -> JsonResponse:
     return JsonResponse({
         "status": "ok"
     })
-
 
 User = get_user_model()
 

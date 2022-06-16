@@ -15,5 +15,10 @@
 
 #### Общая информация
 
-* [Действия с пользователями](docs/README.md) ![flutter](https://img.shields.io/badge/anonymous-brightgreen)
-![flutter](https://img.shields.io/badge/user-brightgreen)
+* [Действия с пользователями](docs/users.md) ![flutter](https://img.shields.io/badge/anonymous-brightgreen)
+![flutter](https://img.shields.io/badge/user-green)
+* [Действия с категориями](docs/goals.md) 
+![flutter](https://img.shields.io/badge/user-green)
+
+
+> Страница дополняется!   
