@@ -71,7 +71,6 @@ def test_retrieve_user(client, csrf_user):
     user = response.json()
     assert user == UserCurrentSerializer(user).data
 
-
 @pytest.mark.django_db
 def test_delete_user(client, csrf_user):
     # csrf_user creates a record in the database
