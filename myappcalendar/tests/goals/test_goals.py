@@ -9,7 +9,6 @@ from tests.factories import UserFactory, GoalCategoryFactory
 # REST_FRAMEWORK['PAGE_SIZE'] = None
 page_size = REST_FRAMEWORK['PAGE_SIZE']
 
-
 @pytest.mark.django_db()
 def test_create_category_goals(client):
     # Get or create user by username
