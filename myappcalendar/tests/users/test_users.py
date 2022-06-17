@@ -58,7 +58,6 @@ def test_create_user(client, user):
     assert response.status_code == 201
     # Check PostData from expected_data and expected_response
     assert response.data == expected_data
-
 """
 with csrf_user
 """
