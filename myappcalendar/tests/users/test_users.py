@@ -3,7 +3,6 @@ import pytest
 from myappcalendar.settings import REST_FRAMEWORK
 from users.serializers import UserCreateSerializer, UserCurrentSerializer
 REST_FRAMEWORK['DEFAULT_PAGINATION_CLASS'] = None
-
 # @pytest.mark.django_db
 # def test_list_token_admin_users(client, jwt_admin_token):
 #     user = UserFactory.create_batch(5)
