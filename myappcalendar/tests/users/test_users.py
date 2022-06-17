@@ -1,9 +1,8 @@
 import pytest
 
 from myappcalendar.settings import REST_FRAMEWORK
-from tests.factories import UserFactory
 from users.serializers import UserCreateSerializer, UserCurrentSerializer
-#from users.models import User
+
 
 REST_FRAMEWORK['DEFAULT_PAGINATION_CLASS'] = None
 

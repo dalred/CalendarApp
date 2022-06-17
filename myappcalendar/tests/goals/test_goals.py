@@ -1,5 +1,4 @@
 # https://www.django-rest-framework.org/api-guide/serializers/
-
 import pytest
 
 from goals.serializers import GoalCategorySerializer
