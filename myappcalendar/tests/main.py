@@ -1,6 +1,5 @@
 from rest_framework.test import APIClient
 from django.test import TestCase
-
 # pytest tests / -vv
 # pytest tests/main.py -vv
 # pytest tests/users/test_users.py -vv
