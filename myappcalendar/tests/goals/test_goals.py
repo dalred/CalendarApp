@@ -4,7 +4,6 @@ import pytest
 from goals.serializers import GoalCategorySerializer
 from myappcalendar.settings import REST_FRAMEWORK
 from tests.factories import UserFactory, GoalCategoryFactory
-
 # REST_FRAMEWORK['DEFAULT_PAGINATION_CLASS'] = None
 # REST_FRAMEWORK['PAGE_SIZE'] = None
 page_size = REST_FRAMEWORK['PAGE_SIZE']
