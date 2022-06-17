@@ -5,3 +5,6 @@ __pycache__/
 /venv/
 Dockerfile.dev
 docker-yaml-test.yaml
+/front
+docker-compose.yaml
+.gitignore
