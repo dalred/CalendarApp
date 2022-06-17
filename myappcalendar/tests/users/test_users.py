@@ -39,7 +39,7 @@ def test_check_user_create_serializer_data():
     }
     # Check PostData from Any
     serializer = UserCreateSerializer(data=data)  # (Десерилизация Json→ dict)
-    assert serializer.is_valid()
+    assert serializer.is_valid(raise_exception=True)
 
 
 @pytest.mark.django_db

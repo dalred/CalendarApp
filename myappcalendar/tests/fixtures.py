@@ -24,7 +24,7 @@ def csrf_admin(client, django_user_model) -> Dict:
 @pytest.fixture()
 @pytest.mark.django_db
 def csrf_user(client, django_user_model) -> Dict:
-    email = "username@username.ru"
+    email = "test1@username.ru"
     password = "password"
 
     django_user_model.objects.create_user(
