@@ -77,5 +77,3 @@ def test_delete_user(client, csrf_user):
     # csrf_user creates a record in the database
     response = client.delete("/core/profile/", content_type='application/json')
     assert response.status_code == 204
-
-
