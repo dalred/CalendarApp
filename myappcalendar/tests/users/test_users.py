@@ -36,7 +36,6 @@ def test_check_user_create_serializer_data():
     serializer = UserCreateSerializer(data=data)  # (Десерилизация Json→ dict)
     assert serializer.is_valid(raise_exception=True)
 
-
 @pytest.mark.django_db
 def test_create_user(client, user):
     # user creates a record in the database
