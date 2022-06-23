@@ -1,7 +1,7 @@
 # https://www.django-rest-framework.org/api-guide/serializers/
 import pytest
 
-from goals.serializers import GoalCategorySerializer
+from goals.serializers import GoalCategoryListSerializer
 from myappcalendar.settings import REST_FRAMEWORK
 from tests.factories import UserFactory, GoalCategoryFactory
 
@@ -22,7 +22,7 @@ def test_create_category_goals(client):
     # login
     client.force_login(user=testuser)
     response = client.get("/goals/goal_category/list/", content_type='application/json')
-    serializer = GoalCategorySerializer(goalcategory, many=True)  # Object -> OrderedDict (сериализация)
+    serializer = GoalCategoryListSerializer(goalcategory, many=True)  # Object -> OrderedDict (сериализация)
 
     # data = [{
     #     'id': '1',
