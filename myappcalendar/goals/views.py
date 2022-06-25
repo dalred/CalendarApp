@@ -8,7 +8,7 @@ from django.db.models import Q
 from goals.filters import GoalDateFilter, GoalCommentFilter, GoalCategoryFilter
 from goals.models import GoalCategory, Goal, Status, GoalComment, Board
 from goals.permissions import BoardPermissions, GoalCatCreatePermissions, GoalCatRetrievePermissions, \
-    GoalRetrievePermissions
+    GoalRetrievePermissions, GoalCommentCreatePermissions, GoalCommentRetrievePermissions, GoalCreatePermissions
 from goals.serializers import GoalCategoryCreateSerializer, GoalCategoryListSerializer, GoalCreateSerializer, \
     GoalListSerializer, \
     GoalCommentCreateSerializer, GoalCommentListSerializer, BoardSerializer, BoardCreateSerializer, BoardListSerializer, \
@@ -39,6 +39,7 @@ class GoalCategoryListView(ListAPIView):
     filterset_class = GoalCategoryFilter
     ordering_fields = ["title", "created"]
     ordering = ["title"]
+
     # search_fields = ["=title"]
 
     # Фильтруем на текущего пользователя
@@ -70,9 +71,10 @@ class GoalCategoryView(RetrieveUpdateDestroyAPIView):
         return instance
 
 
+
 class GoalCreateView(CreateAPIView):
     model = Goal
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated,GoalCreatePermissions]
     serializer_class = GoalCreateSerializer
 
 
@@ -119,7 +121,7 @@ class GoalRUDAView(RetrieveUpdateDestroyAPIView):
 
 class GoalCommentCreateView(CreateAPIView):
     model = GoalComment
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, GoalCommentCreatePermissions]
     serializer_class = GoalCommentCreateSerializer
 
 
@@ -142,27 +144,25 @@ class GoalCommentListView(ListAPIView):
     ordering_fields = ["created"]
     ordering = ["-created"]
 
-    # Фильтруем на текущего пользователя
+    # Пользователю выдаются только те комментарии, которые находятся в целях,
+    # в досках которых он является участником.
     def get_queryset(self):
         return GoalComment.objects.filter(
-            Q(user=self.request.user)
+            Q(goal__category__board__participants__user=self.request.user)
         )
-    # Второй вариант если бы пользователя не было б в комментариях
-    # def get_queryset(self):
-    #     return GoalComment.objects.filter(
-    #         Q(goal__user=self.request.user)
-    #     )
 
 
-class GoalCommentView(RetrieveUpdateDestroyAPIView):
+class GoalCommenRUDAView(RetrieveUpdateDestroyAPIView):
     model = GoalComment
     serializer_class = GoalCommentListSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, GoalCommentRetrievePermissions]
 
-    # Фильтруем на текущего пользователя
+    # Пользователю выдаются только те комментарии, которые находятся в целях,
+    # в досках которых он является участником.
+
     def get_queryset(self):
         return GoalComment.objects.filter(
-            user=self.request.user
+            Q(goal__category__board__participants__user=self.request.user)
         )
 
 

@@ -21,6 +21,7 @@ class GoalCategoryCreateSerializer(serializers.ModelSerializer):
 
 
 class GoalCategoryListSerializer(serializers.ModelSerializer):
+    # TODO не будем менять пользователя в PUT
     user = UserCurrentSerializer(read_only=True)
 
     class Meta:
@@ -80,19 +81,42 @@ class GoalRUDASerializer(serializers.ModelSerializer):
         self._user = self.initial_data.pop('user')
         return super().is_valid(raise_exception=raise_exception)
 
-    # TODO доделывать изменение пользователя, вообще это неправильно что ты можешь изменить пользователя,
-    # из другой сущности.
+    # изменение пользователя, вообще это неправильно,
     def update(self, instance, validated_data):
+        """
+        http://localhost:8000/goals/goal/4/
+        {
+            "user": {
+            "id": 2,
+            "username": "test@teamdev.ru",
+            "email": "test2@teamdev.ru",
+            "first_name": "Петр",
+            "last_name": "Петр Тест"
+            },
+        "title": "Цель 21",
+        "due_date": "2022-06-25T12:29:44.056780+03:00",
+        "description": "Описание тестовой цели",
+        "category": 21
+        }
+        """
         with transaction.atomic():
-            instance.user = User.objects.get(username=self._user.get('username'))
+            """
+            instance = Goal object
+            """
+            # Способность менять пользователя.
+            # instance.user = User.objects.get(username=self._user.get('username'))
+            # instance.user.last_name = self._user.get('last_name', instance.user.last_name)
+            # User.objects.filter(username=self._user.get('username')).update(
+            #     last_name=instance.user.last_name
+            # )
             # instance.user.username = self._user.get('username')
             # instance.user.first_name = self._user.get('first_name', instance.user.first_name)
-            # instance.user.last_name = self._user.get('last_name', instance.user.last_name)
             instance.title = validated_data.get('title', instance.title)
             instance.description = validated_data.get('description', instance.description)
             instance.category = validated_data.get('category', instance.category)
             instance.save()
         return instance
+
 
 class GoalCommentCreateSerializer(serializers.ModelSerializer):
     # Позволяет поймать текущего пользователя и скрыть
@@ -118,7 +142,7 @@ class GoalCommentListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GoalComment
-        read_only_fields = ("id", "created", "updated", "user")
+        read_only_fields = ("id", "created", "updated", "user", "goal")
         fields = "__all__"
 
 
@@ -155,7 +179,7 @@ class BoardParticipantSerializer(serializers.ModelSerializer):
 
 
 class BoardSerializer(serializers.ModelSerializer):
-    # TODO ставим required=False
+    # TODO BoardParticipantSerializer ставим required=False
     # Ну а представим что он не указал participants и шо такого?
     # Хочется title обновить, а без participants не сможет,
     # На кой спрашивается так делать?
@@ -177,6 +201,7 @@ class BoardSerializer(serializers.ModelSerializer):
        }
     ],
     """
+
     def update(self, instance, validated_data):
         if validated_data.get("participants"):
             owner = validated_data.pop("user")
