@@ -13,7 +13,7 @@ services:
         condition: service_healthy
     command: /bin/bash -c "./runserver.sh"
   frontend:
-    image: sermalenk/skypro-front:lesson-36
+    image: sermalenk/skypro-front:lesson-37
     ports:
       - "80:80"
     depends_on:

@@ -4,7 +4,7 @@ from django.db import models
 
 from users.models import User
 
-
+import datetime
 
 class DatesModelMixin(models.Model):
     class Meta:
@@ -95,7 +95,7 @@ class Goal(DatesModelMixin):
 
     title = models.CharField(verbose_name="Название", max_length=255)
     user = models.ForeignKey(User, verbose_name="Автор", on_delete=models.PROTECT)
-    due_date = models.DateTimeField(verbose_name="Дата дедлайна")
+    due_date = models.DateField(verbose_name="Дата дедлайна", default=datetime.date.today)
     description = models.CharField(verbose_name="Описание", max_length=255, default='Unknown')
     status = models.PositiveSmallIntegerField(
         verbose_name="Статус", choices=Status.choices, default=Status.to_do
