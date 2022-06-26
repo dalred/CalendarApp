@@ -13,6 +13,7 @@ class GoalDateFilter(filters.FilterSet):
         fields = {
             "due_date": ("lte", "gte"),
             "category": ("exact", "in"),
+            "category__board": ("exact", "in"),
             "status": ("exact", "in"),
             "priority": ("exact", "in"),
             "title": ("exact", "in", "icontains"),
@@ -36,6 +37,7 @@ class GoalCommentFilter(filters.FilterSet):
 
 class GoalCategoryFilter(filters.FilterSet):
     # Применяется во основном для many связей
+    # Конечно можно было написать dict но хотелось формат, ?user=....или ?username=
     user = filters.filters.ModelMultipleChoiceFilter(field_name='user__username',
                                                   queryset=User.objects.all(),
                                                   lookup_expr="exact",

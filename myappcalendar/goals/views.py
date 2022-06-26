@@ -14,6 +14,8 @@ from goals.serializers import GoalCategoryCreateSerializer, GoalCategoryListSeri
     GoalCommentCreateSerializer, GoalCommentListSerializer, BoardSerializer, BoardCreateSerializer, BoardListSerializer, \
     GoalRUDASerializer
 
+from drf_spectacular.utils import extend_schema, OpenApiParameter
+
 
 class GoalCategoryCreateView(CreateAPIView):
     model = GoalCategory
@@ -71,10 +73,9 @@ class GoalCategoryView(RetrieveUpdateDestroyAPIView):
         return instance
 
 
-
 class GoalCreateView(CreateAPIView):
     model = Goal
-    permission_classes = [permissions.IsAuthenticated,GoalCreatePermissions]
+    permission_classes = [permissions.IsAuthenticated, GoalCreatePermissions]
     serializer_class = GoalCreateSerializer
 
 
@@ -88,6 +89,35 @@ class GoalListView(ListAPIView):
         filters.SearchFilter,
     ]
     filterset_class = GoalDateFilter
+
+    @extend_schema(
+        description="Retrieve goal list",
+        summary="goal list",
+        parameters=[
+            OpenApiParameter(name='due_date__lte', description='Filter by due_date less than', required=False,
+                             type=str),
+            OpenApiParameter(name='due_date__gte', description='Filter by due_date greater than', required=False,
+                             type=str),
+            OpenApiParameter(name='category', description='Filter by name of category',
+                             required=False, type=int),
+            OpenApiParameter(name='category__in', description='Filter by name category__in',
+                             required=False, type=str),
+            OpenApiParameter(name='priority', description='Filter by name of priority',
+                             required=False, type=int),
+            OpenApiParameter(name='priority__in', description='Filter by name priority__in',
+                             required=False, type=int),
+            OpenApiParameter(name='category__board', description='Filter by board if category in value',
+                             required=False, type=int),
+            OpenApiParameter(name='status', description='Filter by status', required=False,
+                             type=int),
+            OpenApiParameter(name='priority', description='Filter by priority', required=False,
+                             type=int),
+            OpenApiParameter(name='title', description='Filter by title', required=False,
+                             type=str)]
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
     pagination_class = LimitOffsetPagination
     ordering_fields = ["title", "created"]
     ordering = ["created"]
@@ -231,6 +261,7 @@ class BoardListView(ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = BoardListSerializer
 
+    pagination_class = LimitOffsetPagination
     filter_backends = [
         filters.OrderingFilter,
     ]

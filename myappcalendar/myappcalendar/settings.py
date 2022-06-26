@@ -120,7 +120,6 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
 }
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -153,8 +152,6 @@ DATABASES = {
         "PASSWORD": os.getenv("DB_PASSWORD"),
     },
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -215,4 +212,8 @@ LOGGING = {
             'level': False
         },
     },
+}
+
+SPECTACULAR_SETTINGS = {
+    'SORT_OPERATIONS': True,
 }

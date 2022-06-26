@@ -22,6 +22,7 @@ class GoalCategoryCreateSerializer(serializers.ModelSerializer):
 
 class GoalCategoryListSerializer(serializers.ModelSerializer):
     # TODO не будем менять пользователя в PUT
+    # TODO разночтения со Swagger в PUT можно что менять пользователя категории? Зачем?
     user = UserCurrentSerializer(read_only=True)
 
     class Meta:
@@ -33,6 +34,10 @@ class GoalCategoryListSerializer(serializers.ModelSerializer):
 class GoalCreateSerializer(serializers.ModelSerializer):
     # Позволяет поймать текущего пользователя и скрыть
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    # добавлено в соотвествии с Swagger
+    due_date = serializers.DateField(format="%Y-%m-%d")
+    # due_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
 
     # Соединяемся по SlugField не добавляем метод get_or_create так в данной задаче
     # Мы выбираем только из существующих категорий.
@@ -59,7 +64,8 @@ class GoalCreateSerializer(serializers.ModelSerializer):
 
 class GoalListSerializer(serializers.ModelSerializer):
     # Позволяет поймать текущего пользователя
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    user = UserCurrentSerializer(read_only=True)
+    due_date = serializers.DateField(format="%Y-%m-%d")
 
     class Meta:
         model = Goal
@@ -70,6 +76,7 @@ class GoalListSerializer(serializers.ModelSerializer):
 class GoalRUDASerializer(serializers.ModelSerializer):
     # Позволяет поймать текущего пользователя
     user = UserCurrentSerializer(many=False, required=False)
+    due_date = serializers.DateField(format="%Y-%m-%d")
 
     class Meta:
         model = Goal
@@ -138,6 +145,7 @@ class GoalCommentCreateSerializer(serializers.ModelSerializer):
 
 class GoalCommentListSerializer(serializers.ModelSerializer):
     # Позволяет поймать текущего пользователя
+    # TODO разночтения со Swagger в PUT, меняем только текст, user не меняем!!!
     user = UserCurrentSerializer(read_only=True)
 
     class Meta:
