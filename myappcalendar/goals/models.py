@@ -93,6 +93,7 @@ class Goal(DatesModelMixin):
         verbose_name = "Цель"
         verbose_name_plural = "Цели"
 
+
     title = models.CharField(verbose_name="Название", max_length=255)
     user = models.ForeignKey(User, verbose_name="Автор", on_delete=models.PROTECT)
     due_date = models.DateField(verbose_name="Дата дедлайна", default=datetime.date.today)
