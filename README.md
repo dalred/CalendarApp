@@ -30,10 +30,9 @@
 
 * [Действия с пользователями](docs/users.md) ![flutter](https://img.shields.io/badge/anonymous-blueviolet)
 ![flutter](https://img.shields.io/badge/user-green)
-* [Действия с категориями](docs/goals.md) 
-![flutter](https://img.shields.io/badge/user-green)
 * [Участник доски](docs/boardparticipant.md)
   * [Действия с досками](docs/boards.md) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF)
-
+* [Действия с категориями](docs/goalcategory.md) 
+![flutter](https://img.shields.io/badge/user-green)
 
 > Страница дополняется!   
