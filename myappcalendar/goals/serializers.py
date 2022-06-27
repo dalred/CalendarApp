@@ -214,11 +214,11 @@ class BoardSerializer(serializers.ModelSerializer):
             owner = validated_data.pop("user")
             new_participants = validated_data.pop("participants")
             new_by_id = {part["user"].id: part for part in new_participants}
-
             old_participants = instance.participants.exclude(user=owner)
             with transaction.atomic():
                 for old_participant in old_participants:
                     if old_participant.user_id not in new_by_id:
+
                         old_participant.delete()
                     else:
                         if (
@@ -234,8 +234,8 @@ class BoardSerializer(serializers.ModelSerializer):
                     BoardParticipant.objects.create(
                         board=instance, user=new_part["user"], role=new_part["role"]
                     )
-        instance.title = validated_data["title"]
-        instance.save()
+                instance.title = validated_data["title"]
+                instance.save()
         return instance
 
 
