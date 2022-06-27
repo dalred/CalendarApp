@@ -83,6 +83,7 @@ class GoalRUDASerializer(serializers.ModelSerializer):
         read_only_fields = ("id", "created", "updated")
         fields = "__all__"
 
+    # Исходя из swagger user {} должен быть в put зачем-то
     def is_valid(self, raise_exception=False):
         # Словарь который передает пользователь
         self._user = self.initial_data.pop('user')
@@ -94,16 +95,14 @@ class GoalRUDASerializer(serializers.ModelSerializer):
         http://localhost:8000/goals/goal/4/
         {
             "user": {
-            "id": 2,
-            "username": "test@teamdev.ru",
-            "email": "test2@teamdev.ru",
-            "first_name": "Петр",
-            "last_name": "Петр Тест"
+                "username": "test@teamdev.ru"
             },
-        "title": "Цель 21",
-        "due_date": "2022-06-25T12:29:44.056780+03:00",
-        "description": "Описание тестовой цели",
-        "category": 21
+            "due_date": "2022-06-26",
+            "title": "Цель 1",
+            "description": "Описание тестовой цели 1",
+            "status": 1,
+            "priority": 1,
+            "category": 1
         }
         """
         with transaction.atomic():

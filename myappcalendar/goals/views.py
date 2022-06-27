@@ -51,8 +51,10 @@ class GoalCategoryListView(ListAPIView):
         # но и другие, в досках которых он является участником.
         # TODO возможно не совсем верно, но все же, я решил что если он является участником,
         # То не важно создатель он или нет.
-        return GoalCategory.objects.filter(
-            Q(board__participants__user=self.request.user, is_deleted=False)
+        # Не увидел огромного преимущества от related
+        return GoalCategory.objects.select_related('user').filter(
+            board__participants__user_id=self.request.user.id,
+            is_deleted=False
         )
 
 
@@ -62,7 +64,7 @@ class GoalCategoryView(RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated, GoalCatRetrievePermissions]
 
     def get_queryset(self):
-        return GoalCategory.objects.filter(
+        return GoalCategory.objects.select_related('user').filter(
             Q(board__participants__user=self.request.user, is_deleted=False)
         )
 
