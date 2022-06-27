@@ -17,15 +17,14 @@
 
 ![flutter](https://img.shields.io/badge/user-green) – требует авторизацию пользователя.
 
-##### Права пользователя
 
-* ![flutter](https://img.shields.io/badge/owner-00FFFF) – актуально для запросов c правами на board owner.
+![flutter](https://img.shields.io/badge/boardparticipant-0000FF) – требует право быть участником board.
+##### Права участника доски
+  * ![flutter](https://img.shields.io/badge/owner-00FFFF) – актуально для запросов c правами на board owner.
 
-* ![flutter](https://img.shields.io/badge/writer-C0C0C0) – актуально для запросов c правами на board  writer.
+  * ![flutter](https://img.shields.io/badge/writer-C0C0C0) – актуально для запросов c правами на board  writer.
 
-* ![flutter](https://img.shields.io/badge/reader-00FF00) – актуально для запросов c правами на board reader.
-
-* ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) – требует право быть участником board.
+  * ![flutter](https://img.shields.io/badge/reader-00FF00) – актуально для запросов c правами на board reader.
 
 #### Общая информация
 
