@@ -14,7 +14,7 @@
     "model": "goals.GoalComment",
     "pk": 2,
     "fields": {
-      "user": 1,
+      "user": 2,
       "text": "Тестовый комментарий2 первой цели",
       "goal": 1,
       "created": "2022-06-13T09:31:44.056780Z",

@@ -17,12 +17,24 @@
 
 ![flutter](https://img.shields.io/badge/user-green) – требует авторизацию пользователя.
 
+##### Права пользователя
+
+* ![flutter](https://img.shields.io/badge/owner-00FFFF) – актуально для запросов c правами на board owner.
+
+* ![flutter](https://img.shields.io/badge/writer-C0C0C0) – актуально для запросов c правами на board  writer.
+
+* ![flutter](https://img.shields.io/badge/reader-00FF00) – актуально для запросов c правами на board reader.
+
+* ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) – требует право быть участником board.
+
 #### Общая информация
 
 * [Действия с пользователями](docs/users.md) ![flutter](https://img.shields.io/badge/anonymous-blueviolet)
 ![flutter](https://img.shields.io/badge/user-green)
 * [Действия с категориями](docs/goals.md) 
 ![flutter](https://img.shields.io/badge/user-green)
+* [Участник доски](docs/boardparticipant.md)
+  * [Действия с досками](docs/boards.md) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF)
 
 
 > Страница дополняется!   

@@ -28,7 +28,7 @@ class GoalCategoryCreateView(CreateAPIView):
 
 
 class GoalCategoryListView(ListAPIView):
-    queryset = GoalCategory.objects.all()
+    queryset = GoalCategory
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = GoalCategoryListSerializer
 
