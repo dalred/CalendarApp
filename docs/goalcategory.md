@@ -2,11 +2,11 @@
 
 
 #### Методы для работы с категориями пользователя
-* POST `/goals/goal_category/create/` — [cоздание категории](#Создание-категории) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0)
-* GET `/goals/goal_category/list` — [просмотр списка категорий](#список-категорий-пользователя) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00)
-* GET `/goals/goal_category/‹pk›` — [просмотр категории](#просмотр-категории) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00)
-* PUT `/goals/goal_category/‹pk›` — [редактирование категории](#редактирование-категории) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0)
-* DELETE `/goals/goal_category/‹pk›` — [удаление категории](#удаление-доски) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0)
+* POST `/goals/goal_category/create/` — [cоздание категории](#Создание-категории) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0)
+* GET `/goals/goal_category/list` — [просмотр списка категорий](#список-категорий-пользователя) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF)
+* GET `/goals/goal_category/‹pk›` — [просмотр категории](#просмотр-категории) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF)
+* PUT `/goals/goal_category/‹pk›` — [редактирование категории](#редактирование-категории) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0)
+* DELETE `/goals/goal_category/‹pk›` — [удаление категории](#удаление-доски) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0)
 
 
 #### Создание категории

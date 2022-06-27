@@ -2,10 +2,10 @@
 
 #### Методы для работы с досками
 * POST `/goals/board/create` — [cоздание доски](#Создание-доски) ![flutter](https://img.shields.io/badge/user-green)
-* GET `/goals/board/list` — [просмотр списка досок](#просмотр-списка-досок) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00)
-* GET `/goals/board/‹pk›` — [просмотр доски](#просмотр-доски) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00)
-* PUT `/goals/board/‹pk›` — [редактирование доски](#редактирование-доски) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF)
-* DELETE `/goals/board/‹pk›` — [удаление доски](#удаление-доски) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF)
+* GET `/goals/board/list` — [просмотр списка досок](#просмотр-списка-досок) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF)
+* GET `/goals/board/‹pk›` — [просмотр доски](#просмотр-доски) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF)
+* PUT `/goals/board/‹pk›` — [редактирование доски](#редактирование-доски) ![flutter](https://img.shields.io/badge/owner-00FFFF)
+* DELETE `/goals/board/‹pk›` — [удаление доски](#удаление-доски) ![flutter](https://img.shields.io/badge/owner-00FFFF)
 
 #### Создание доски
 Приложению необходимо сделать сервер-сервер запрос POST `/goals/board/create`
