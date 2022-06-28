@@ -37,6 +37,7 @@ class GoalCreateSerializer(serializers.ModelSerializer):
 
     # добавлено в соотвествии с Swagger
     due_date = serializers.DateField(format="%Y-%m-%d")
+
     # due_date = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
 
     # Соединяемся по SlugField не добавляем метод get_or_create так в данной задаче
@@ -208,22 +209,18 @@ class BoardSerializer(serializers.ModelSerializer):
        }
     ],
     """
-    def is_valid(self, raise_exception=False):
-        # Словарь который передает пользователь
-        self._user = self.initial_data.get('participants')
-        print('self._user', self._user)
-        return super().is_valid(raise_exception=raise_exception)
-
     def update(self, instance, validated_data):
         if validated_data.get("participants"):
+            # owner от кого получаем запрос.
             owner = validated_data.pop("user")
             new_participants = validated_data.pop("participants")
-            new_by_id = {part["user"].id: part for part in new_participants}
+            # Добавлено owner.id != чтобы каким-то неведомым образом пользователь не указал самого себя
+            new_by_id = {part["user"].id: part for part in new_participants if owner.id != part["user"].id}
+            print('new_by_id', new_by_id)
             old_participants = instance.participants.exclude(user=owner)
             with transaction.atomic():
                 for old_participant in old_participants:
                     if old_participant.user_id not in new_by_id:
-
                         old_participant.delete()
                     else:
                         if (
