@@ -39,10 +39,7 @@ HTTP Status 201 Created
 Пример ответа
 ```
 {
-  "count": 123,
-  "next": "http://api.example.org/accounts/?offset=400&limit=100",
-  "previous": "http://api.example.org/accounts/?offset=200&limit=100",
-  "results": [
+  [
     {
       "id": 0,
       "user": {
@@ -57,7 +54,22 @@ HTTP Status 201 Created
       "title": "string",
       "is_deleted": false,
       "board": 0
-    }
+    },
+    {
+      "id": 1,
+      "user": {
+        "id": 0,
+        "username": "string",
+        "email": "user@example.com",
+        "first_name": "string",
+        "last_name": "string"
+      },
+      "created": "2022-06-27T06:27:05.618Z",
+      "updated": "2022-06-27T06:27:05.618Z",
+      "title": "string",
+      "is_deleted": false,
+      "board": 0
+    },
   ]
 }
 HTTP Status 200 OK

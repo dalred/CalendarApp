@@ -33,12 +33,16 @@ HTTP Status 201 Created
 Приложению необходимо сделать сервер-сервер запрос get на endpoint `/goals/board/list`
 ```
 {
-  "count": 123,
-  "next": "http://api.example.org/accounts/?offset=400&limit=100",
-  "previous": "http://api.example.org/accounts/?offset=200&limit=100",
-  "results": [
+  [
     {
       "id": 0,
+      "created": "2022-06-26T22:39:30.077Z",
+      "updated": "2022-06-26T22:39:30.077Z",
+      "title": "string",
+      "is_deleted": true
+    },
+    {
+      "id": 1,
       "created": "2022-06-26T22:39:30.077Z",
       "updated": "2022-06-26T22:39:30.077Z",
       "title": "string",

@@ -32,7 +32,9 @@
 ![flutter](https://img.shields.io/badge/user-green)
 * [Участник доски](docs/boardparticipant.md)
   * [Действия с досками](docs/boards.md) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00)
-* [Действия с категориями](docs/goalcategory.md) 
+    * [Действия с категориями](docs/goalcategory.md) 
+![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00)
+      * [Действия с целями](docs/goals.md) 
 ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00)
 
 > Страница дополняется!   

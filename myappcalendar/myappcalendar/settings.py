@@ -116,7 +116,8 @@ SIMPLE_JWT = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Candidates API',
+    'SORT_OPERATIONS': True,
+    'TITLE': 'API',
     'DESCRIPTION': 'Awesome Calendar project',
     'VERSION': '1.0.0',
 }
@@ -215,6 +216,3 @@ LOGGING = {
     },
 }
 
-SPECTACULAR_SETTINGS = {
-    'SORT_OPERATIONS': True,
-}
