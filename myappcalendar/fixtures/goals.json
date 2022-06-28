@@ -26,5 +26,159 @@
       "created": "2022-06-13T09:29:44.056780Z",
       "updated": "2022-06-13T09:29:44.056780Z"
     }
+  },
+  {
+    "model": "goals.Goal",
+    "pk": 3,
+    "fields": {
+      "title": "Цель 2",
+      "user": 1,
+      "description": "Описание тестовой цели 3",
+      "status": 2,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  },
+  {
+    "model": "goals.Goal",
+    "pk": 4,
+    "fields": {
+      "title": "Цель 2",
+      "user": 1,
+      "description": "Описание тестовой цели 4",
+      "status": 2,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  },
+  {
+    "model": "goals.Goal",
+    "pk": 5,
+    "fields": {
+      "title": "Цель 2",
+      "user": 1,
+      "description": "Описание тестовой цели 5",
+      "status": 2,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  },
+  {
+    "model": "goals.Goal",
+    "pk": 6,
+    "fields": {
+      "title": "Цель 2",
+      "user": 1,
+      "description": "Описание тестовой цели 6",
+      "status": 2,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  },
+  {
+    "model": "goals.Goal",
+    "pk": 7,
+    "fields": {
+      "title": "Цель 2",
+      "user": 1,
+      "description": "Описание тестовой цели 7",
+      "status": 2,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  },
+  {
+    "model": "goals.Goal",
+    "pk": 8,
+    "fields": {
+      "title": "Цель 2",
+      "user": 1,
+      "description": "Описание тестовой цели 8",
+      "status": 2,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  },
+  {
+    "model": "goals.Goal",
+    "pk": 9,
+    "fields": {
+      "title": "Цель 2",
+      "user": 1,
+      "description": "Описание тестовой цели 9",
+      "status": 2,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  },
+  {
+    "model": "goals.Goal",
+    "pk": 10,
+    "fields": {
+      "title": "Цель 2",
+      "user": 1,
+      "description": "Описание тестовой цели 10",
+      "status": 2,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  },
+  {
+    "model": "goals.Goal",
+    "pk": 11,
+    "fields": {
+      "title": "Цель 2",
+      "user": 1,
+      "description": "Описание тестовой цели 11",
+      "status": 2,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  },
+  {
+    "model": "goals.Goal",
+    "pk": 12,
+    "fields": {
+      "title": "Цель 2",
+      "user": 1,
+      "description": "Описание тестовой цели 12",
+      "status": 2,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
+  },
+  {
+    "model": "goals.Goal",
+    "pk": 13,
+    "fields": {
+      "title": "Цель 2",
+      "user": 1,
+      "description": "Описание тестовой цели 13",
+      "status": 2,
+      "priority": 1,
+      "category": 1,
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z"
+    }
   }
 ]

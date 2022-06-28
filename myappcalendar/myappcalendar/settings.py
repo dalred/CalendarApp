@@ -99,8 +99,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
 
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 5,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    # 'PAGE_SIZE': 5,  # при лист выдает ограниченное количество значений.
+    # 'DEFAULT_PAGINATION_CLASS': rest_framework.pagination.PageNumberPagination
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     # 'DEFAULT_FILTER_BACKENDS': (

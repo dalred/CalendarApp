@@ -208,6 +208,11 @@ class BoardSerializer(serializers.ModelSerializer):
        }
     ],
     """
+    def is_valid(self, raise_exception=False):
+        # Словарь который передает пользователь
+        self._user = self.initial_data.get('participants')
+        print('self._user', self._user)
+        return super().is_valid(raise_exception=raise_exception)
 
     def update(self, instance, validated_data):
         if validated_data.get("participants"):
