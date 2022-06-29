@@ -6,7 +6,7 @@
 * GET `/goals/goal/list` — [просмотр списка целей](#список-целей-пользователя) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF)
 * GET `/goals/goal/‹pk›` — [просмотр цели](#просмотр-цели) ![flutter](https://img.shields.io/badge/boardparticipant-0000FF)
 * PUT `/goals/goal/‹pk›` — [редактирование цели](#редактирование-цели) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0)
-* DELETE `/goals/goal/‹pk›` — [удаление цели](#удаление-доски) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0)
+* DELETE `/goals/goal/‹pk›` — [удаление цели](#удаление-цели) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0)
 
 
 #### Создание цели
