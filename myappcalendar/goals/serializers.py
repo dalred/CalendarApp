@@ -4,8 +4,8 @@ from goals.models import GoalCategory, Goal, GoalComment, Board, BoardParticipan
 from users.serializers import UserCurrentSerializer
 from django.contrib.auth import get_user_model
 
-User = get_user_model()
 
+User = get_user_model()
 
 class GoalCategoryCreateSerializer(serializers.ModelSerializer):
     """
@@ -76,18 +76,19 @@ class GoalListSerializer(serializers.ModelSerializer):
 
 class GoalRUDASerializer(serializers.ModelSerializer):
     # Позволяет поймать текущего пользователя
-    user = UserCurrentSerializer(many=False, required=False)
+    user = UserCurrentSerializer(many=False, required=False, read_only=True)
     due_date = serializers.DateField(format="%Y-%m-%d")
 
     class Meta:
         model = Goal
-        read_only_fields = ("id", "created", "updated")
+        read_only_fields = ("id", "created", "updated", "user")
         fields = "__all__"
 
-    # Исходя из swagger user {} должен быть в put зачем-то
+    # Исходя из swagger user {} должен быть в put зачем-то, если только применять как кто последний редактировал
+    # Тот и будет сохранен в User
     def is_valid(self, raise_exception=False):
         # Словарь который передает пользователь
-        self._user = self.initial_data.pop('user')
+        self._user = self.context["request"].user
         return super().is_valid(raise_exception=raise_exception)
 
     # изменение пользователя, вообще это неправильно,
@@ -96,7 +97,7 @@ class GoalRUDASerializer(serializers.ModelSerializer):
         http://localhost:8000/goals/goal/4/
         {
             "user": {
-                "username": "test@teamdev.ru"
+                "username": "test@teamdev.ru" - необязательно
             },
             "due_date": "2022-06-26",
             "title": "Цель 1",
@@ -111,16 +112,21 @@ class GoalRUDASerializer(serializers.ModelSerializer):
             instance = Goal object
             """
             # Способность менять пользователя.
-            # instance.user = User.objects.get(username=self._user.get('username'))
+            # print(User.objects.get(pk=self._user.get('username').id))
+
             # instance.user.last_name = self._user.get('last_name', instance.user.last_name)
             # User.objects.filter(username=self._user.get('username')).update(
             #     last_name=instance.user.last_name
             # )
-            # instance.user.username = self._user.get('username')
+            # Сохраняем, пользователя который последний раз редактировал цель
+            instance.user = User.objects.get(username=self._user)
+            #instance.user.username = self._user.username
             # instance.user.first_name = self._user.get('first_name', instance.user.first_name)
             instance.title = validated_data.get('title', instance.title)
             instance.description = validated_data.get('description', instance.description)
             instance.category = validated_data.get('category', instance.category)
+            instance.status = validated_data.get('status', instance.status)
+            instance.priority = validated_data.get('priority', instance.priority)
             instance.save()
         return instance
 
