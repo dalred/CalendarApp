@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'login',
     'social_django',
     'goals',
+    'bot'
 ]
 
 AUTH_USER_MODEL = 'users.User'

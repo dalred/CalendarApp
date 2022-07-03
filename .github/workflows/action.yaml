@@ -15,6 +15,7 @@ env:
   NAME_APP: ${{secrets.NAME_APP}}
   VK_OAUTH2_KEY : ${{secrets.VK_OAUTH2_KEY}}
   VK_OAUTH2_SECRET : ${{secrets.VK_OAUTH2_SECRET}}
+  TELEGRAM_TOKEN_BOT: ${{secrets.TELEGRAM_TOKEN_BOT}}
 
 
 jobs:
