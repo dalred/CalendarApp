@@ -12,6 +12,16 @@ services:
       db:
         condition: service_healthy
     command: /bin/bash -c "./runserver.sh"
+  bot:
+    image: dalred/$NAME_APP:$GITHUB_REF_NAME-version-$GITHUB_RUN_ID
+    depends_on:
+      db:
+        condition: service_healthy
+    command:
+      - bash
+      - -c
+      - |
+        python manage.py runbot
   frontend:
     image: sermalenk/skypro-front:lesson-37
     ports:
