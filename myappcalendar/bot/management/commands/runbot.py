@@ -115,6 +115,7 @@ class Command(BaseCommand):
         elif message.text == '/create':
             self.tg_cat_list(message, tg_user)
             FSM_STATES[tg_user.telegram_chat_id] = FSM_DATA(state=StateEnum.CREATE_CATEGORY_STATE, goals=NewGoal())
+            # TODO не совсем верно!
         elif message.text == '/cancel' and tg_user.telegram_chat_id in FSM_STATES:
             FSM_STATES.pop(tg_user.telegram_chat_id)
         elif tg_user.telegram_chat_id in FSM_STATES:

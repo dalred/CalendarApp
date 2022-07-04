@@ -3,7 +3,6 @@ from typing import List
 from marshmallow import EXCLUDE
 
 
-
 # @dataclass
 # class GetUpdatesResponse:
 #     ok: bool
@@ -40,6 +39,7 @@ class Message:
     text: str = None
     message_id: int = 0
     entities: list = None  # [{"offset":0,"length":5,"type":"bot_command"}]
+    edit_date: int = 0
 
     class Meta:
         unknown = EXCLUDE
@@ -49,16 +49,16 @@ class Message:
 class UpdateObj:
     message: Message
     update_id: int = 0
+    edited_message: Message = None
 
     class Meta:
         unknown = EXCLUDE
 
 
-
 @dataclass
 class GetUpdatesResponse:
     ok: bool
-    result: List[UpdateObj]
+    result: List[UpdateObj] = field(default_factory=List[UpdateObj])
 
 
 @dataclass
@@ -68,6 +68,3 @@ class SendMessageResponse:
 
     class Meta:
         unknown = EXCLUDE
-
-
-
