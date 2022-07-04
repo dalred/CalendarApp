@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum, unique, auto
-from typing import List, Dict
+from typing import Dict
 
 from django.core.management.base import BaseCommand
 import os, dotenv
@@ -87,14 +87,14 @@ class Command(BaseCommand):
 
     def tg_goal_list(self, message, tg_user: TgUser):
         # TODO Разобраться с %23
-        goal_list: List[str] = [
+        goal_list = [
             f'%23{item.id}{item.title}'.replace(" ", "")
             for item in Goal.objects.filter(user_id=tg_user.user)
         ]
         self.tg_client.send_message(chat_id=message.chat.id, text='\n'.join(goal_list) or ['no goals'])
 
     def tg_cat_list(self, message, tg_user: TgUser):
-        cat_list: List[str] = [
+        cat_list = [
             f'%23{item.id}{item.title}'
             for item in GoalCategory.objects.select_related('user').filter(
                 board__participants__user_id=tg_user.user,
