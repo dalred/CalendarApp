@@ -5,9 +5,9 @@ from typing import Dict
 from django.core.management.base import BaseCommand
 import os, dotenv
 from myappcalendar.settings import BASE_DIR
-# dotenv.load_dotenv(f'{BASE_DIR}/.env')
+dotenv.load_dotenv(f'{BASE_DIR}/.env')
 
-host = os.environ.get('DOMEN', 'None')
+host = os.getenv('DOMEN', 'None')
 
 
 from bot.models import TgUser
@@ -41,7 +41,7 @@ FSM_STATES: Dict[int, FSM_DATA] = {}
 
 class Command(BaseCommand):
     help = "runbot command"
-    tg_client = TgClient(os.environ.get('TOKEN_BOT'))
+    tg_client = TgClient(os.getenv('TOKEN_BOT'))
 
     @property
     def _generate_code(self) -> str:

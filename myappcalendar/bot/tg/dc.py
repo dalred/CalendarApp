@@ -55,7 +55,7 @@ class UpdateObj:
 @dataclass
 class GetUpdatesResponse:
     ok: bool
-    result: list[UpdateObj] = field(default_factory=list[UpdateObj])
+    result: List[UpdateObj]
 
 
 @dataclass
