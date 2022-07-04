@@ -124,7 +124,7 @@ class Command(BaseCommand):
                 self.select_category(message=message, tg_user=tg_user)
             elif state == StateEnum.CHOSEN_CATEGORY:
                 self.new_goal(message=message, tg_user=tg_user)
-        else:
+        elif not message.text.startswith("/"):
             self.tg_client.send_message(text='Unknown command!', chat_id=message.chat.id)
 
     def handle(self, *args, **options):
