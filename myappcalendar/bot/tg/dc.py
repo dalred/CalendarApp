@@ -50,6 +50,9 @@ class UpdateObj:
     message: Message
     update_id: int = 0
 
+    class Meta:
+        unknown = EXCLUDE
+
 
 
 @dataclass
