@@ -10,5 +10,17 @@
       "updated": "2022-06-13T09:29:44.056780Z",
       "is_deleted": false
     }
+  },
+  {
+    "model": "goals.GoalCategory",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "board": 1,
+      "title": "test_category2",
+      "created": "2022-06-13T09:29:44.056780Z",
+      "updated": "2022-06-13T09:29:44.056780Z",
+      "is_deleted": false
+    }
   }
 ]

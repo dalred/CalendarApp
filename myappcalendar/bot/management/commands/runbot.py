@@ -4,44 +4,29 @@ from typing import Dict
 
 from django.core.management.base import BaseCommand
 import os, dotenv
+
 # from myappcalendar.settings import BASE_DIR
 # dotenv.load_dotenv(f'{BASE_DIR}/.env')
+from bot.tg.fsm.storage.memory_storage import MemoryStorage, StateEnum, NewGoal
 
-host = os.environ.get('DOMEN', 'None')
-
+domen = os.environ.get('DOMEN', 'None')
 
 from bot.models import TgUser
 from bot.tg.client import TgClient
 from goals.models import Goal, GoalCategory
 
 
-@dataclass
-class NewGoal:
-    goal_title: str = None
-    cat_id: int = 0
-
-    def complete(self) -> bool:
-        return None not in {self.cat_id, self.goal_title}
 
 
-@unique
-class StateEnum(Enum):
-    CREATE_CATEGORY_STATE = auto()
-    CHOSEN_CATEGORY = auto()
-
-
-@dataclass
-class FSM_DATA:
-    state: StateEnum
-    goals: NewGoal
-
-
-FSM_STATES: Dict[int, FSM_DATA] = {}
 
 
 class Command(BaseCommand):
     help = "runbot command"
-    tg_client = TgClient(os.environ.get('TOKEN_BOT'))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.tg_client = TgClient(os.environ.get('TOKEN_BOT'))
+        self.storage = MemoryStorage()
 
     @property
     def _generate_code(self) -> str:
@@ -64,26 +49,27 @@ class Command(BaseCommand):
                     is_deleted=False,
                     id=cat_id
             ).exists():
-                FSM_STATES[tg_user.telegram_chat_id].goals.cat_id = cat_id
+                self.storage.set_state(chat_id=tg_user.telegram_chat_id, state=StateEnum.HAS_CHOSEN_CATEGORY)
+                self.storage.set_data(chat_id=tg_user.telegram_chat_id, data=NewGoal(cat_id=cat_id).__dict__)
                 self.tg_client.send_message(chat_id=message.chat.id, text='Set goal title')
-                FSM_STATES[tg_user.telegram_chat_id].state = StateEnum.CHOSEN_CATEGORY
                 return
             self.tg_client.send_message(chat_id=message.chat.id, text='invalid category')
 
     def new_goal(self, message, tg_user: TgUser):
-        goal: NewGoal = FSM_STATES[tg_user.telegram_chat_id].goals
-        goal.goal_title = message.text
-        if goal.complete():
-            goal_create = Goal.objects.create(
-                title=goal.goal_title,
-                category_id=goal.cat_id,
-                user=tg_user.user,
-                description='Tg goal'
-            )
-            self.tg_client.send_message(chat_id=message.chat.id,
-                                        text=f'http://{host}/categories/goals?goal={goal_create.pk}')
-        else:
-            self.tg_client.send_message(chat_id=message.chat.id, text=f'Something went wrong!')
+        #data = self.storage.get_data(chat_id=tg_user.telegram_chat_id)
+        cat_id = self.storage.get_data(chat_id=123).get('cat_id')
+        goal = NewGoal(goal_title=message.text, cat_id=cat_id)
+        self.storage.set_data(chat_id=tg_user.telegram_chat_id, data=goal.__dict__)
+        goal_create = Goal.objects.create(
+            title=goal.goal_title,
+            category_id=goal.cat_id,
+            user=tg_user.user,
+            description='Tg goal'
+        )
+        self.tg_client.send_message(chat_id=message.chat.id,
+                                    text=f'http://{domen}/categories/goals?goal={goal_create.pk}')
+        # else:
+        #     self.tg_client.send_message(chat_id=message.chat.id, text=f'Something went wrong!')
 
     def tg_goal_list(self, message, tg_user: TgUser):
         # TODO Разобраться с %23
@@ -107,23 +93,35 @@ class Command(BaseCommand):
         else:
             self.tg_client.send_message(chat_id=message.chat.id, text=f'Categories are not found')
 
-        FSM_STATES.pop(tg_user.telegram_chat_id, None)
+        #FSM_STATES.pop(tg_user.telegram_chat_id, None)
 
     def handle_verified_user(self, message, tg_user: TgUser):
+
         if message.text == '/goals':
             self.tg_goal_list(message, tg_user)
+            self.storage.set_state(chat_id=tg_user.telegram_chat_id, state=StateEnum.GET_GOALS)
+
         elif message.text == '/create':
             self.tg_cat_list(message, tg_user)
-            FSM_STATES[tg_user.telegram_chat_id] = FSM_DATA(state=StateEnum.CREATE_CATEGORY_STATE, goals=NewGoal())
-            # TODO не совсем верно!
-        elif message.text == '/cancel' and tg_user.telegram_chat_id in FSM_STATES:
-            FSM_STATES.pop(tg_user.telegram_chat_id)
-        elif tg_user.telegram_chat_id in FSM_STATES:
-            state: StateEnum = FSM_STATES[tg_user.telegram_chat_id].state
+            self.storage.set_state(chat_id=tg_user.telegram_chat_id, state=StateEnum.CREATE_CATEGORY_STATE)
+
+        elif message.text == '/cancel':
+            self.storage.reset(tg_user.telegram_chat_id)
+
+        # TODO Основа нужна для того чтобы делать что-то после ввода пользователя, понять на каком ты шаге
+        # BOT не понимает на каком шаге находится пользователь после обновления событий.
+        # Без ввода пользователя можно было бы обойтись без FSM_STATES
+
+        elif state := self.storage.get_state(tg_user.telegram_chat_id):
             if state == StateEnum.CREATE_CATEGORY_STATE:
                 self.select_category(message=message, tg_user=tg_user)
-            elif state == StateEnum.CHOSEN_CATEGORY:
+            elif state == StateEnum.HAS_CHOSEN_CATEGORY:
                 self.new_goal(message=message, tg_user=tg_user)
+            elif state == StateEnum.GET_GOALS:
+                print('GET_GOALS', self.storage.get_state(tg_user.telegram_chat_id))
+                # ......сделать что-то после ввода пользователя в state Get_Goals
+
+        # Относится к случаям когда пользователь не перешел в какое-то из состояний
         elif not message.text.startswith("/"):
             self.tg_client.send_message(text='Unknown command!', chat_id=message.chat.id)
 
