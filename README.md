@@ -1,4 +1,4 @@
-# CalendarApp
+# ToDoApp
 
 ![flutter](https://img.shields.io/badge/python-v3.8-blue)
 ![flutter](https://img.shields.io/badge/django-v4.0.4-blue)
@@ -16,6 +16,8 @@
 ![flutter](https://img.shields.io/badge/anonymous-blueviolet) – актуально для анонимных запросов, не требует авторизации.
 
 ![flutter](https://img.shields.io/badge/user-green) – требует авторизацию пользователя.
+
+  * ![flutter](https://img.shields.io/badge/currentuser-00FF7F)  –  текущий пользователь.
 
 
 ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) – требует право быть участником board.
@@ -36,5 +38,8 @@
 ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00)
       * [Действия с целями](docs/goals.md) 
 ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00)
+        * [Действия с комментариями](docs/comments.md) 
+![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00) ![flutter](https://img.shields.io/badge/currentuser-00FF7F)
+
 
 > Страница дополняется!   

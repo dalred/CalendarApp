@@ -1,9 +1,7 @@
 import random
-from django.utils import timezone
 import factory.fuzzy
-from datetime import datetime as dt
-
-from goals.models import GoalCategory, Board, BoardParticipant
+from faker import Faker
+from goals.models import GoalCategory, Board, BoardParticipant, Goal, GoalComment
 from users.models import User
 
 
@@ -14,6 +12,16 @@ class BoardFactory(factory.django.DjangoModelFactory):
     title = factory.Sequence(lambda n: f'TestBoard{n + 1}')
     is_deleted = False
 
+    @factory.post_generation
+    def user(self, create, extracted, **kwargs):
+        if extracted:
+            boardparticipant = BoardParticipantFactory(user=extracted, board=self, role=1)
+        else:
+            testuser = UserFactory(
+                username="test1@example.com"
+            )
+            boardparticipant = BoardParticipantFactory(user=testuser, board=self, role=1)
+
 
 class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -22,7 +30,9 @@ class UserFactory(factory.django.DjangoModelFactory):
 
     username = factory.Sequence(lambda n: f'test{n + 1}@example.com')
     password = 'password'
-
+    first_name = factory.Faker('first_name')
+    last_name = factory.Faker('last_name')
+    email = factory.LazyAttribute(lambda obj: f'{obj.username}')
 
 class BoardParticipantFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -41,4 +51,24 @@ class GoalCategoryFactory(factory.django.DjangoModelFactory):
     user = factory.SubFactory(UserFactory)
     is_deleted = False
     board = factory.SubFactory(BoardFactory)
-    # updated = factory.Faker('iso8601', tzinfo=timezone.get_current_timezone())
+
+
+class GoalFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Goal
+
+    title = factory.Sequence(lambda n: f'TestGoal{n + 1}')
+    user = factory.SubFactory(UserFactory)
+    due_date = factory.Faker('date')
+    category = factory.SubFactory(GoalCategoryFactory)
+    status = random.choice([1, 2])
+
+
+class GoalCommentsFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = GoalComment
+
+    text = factory.Sequence(lambda n: f'Cooment №{n + 1}{Faker().text()}')
+    # text = factory.LazyAttribute(lambda obj: '%s@example.com' % obj.username)
+    user = factory.SubFactory(UserFactory)
+    goal = factory.SubFactory(GoalFactory)
