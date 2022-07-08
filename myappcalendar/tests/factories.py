@@ -8,19 +8,27 @@ from users.models import User
 class BoardFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Board
+        django_get_or_create = ('title',)
 
     title = factory.Sequence(lambda n: f'TestBoard{n + 1}')
     is_deleted = False
 
     @factory.post_generation
     def user(self, create, extracted, **kwargs):
+        """
+        :param extracted: если указан то даем праву переданному пользователю,
+        если None, берем по умолчанию. False создаем board без прав.
+        :return:
+        """
         if extracted:
             boardparticipant = BoardParticipantFactory(user=extracted, board=self, role=1)
-        else:
+        elif extracted is None:
             testuser = UserFactory(
                 username="test1@example.com"
             )
             boardparticipant = BoardParticipantFactory(user=testuser, board=self, role=1)
+        elif not extracted:
+            return self
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -33,6 +41,7 @@ class UserFactory(factory.django.DjangoModelFactory):
     first_name = factory.Faker('first_name')
     last_name = factory.Faker('last_name')
     email = factory.LazyAttribute(lambda obj: f'{obj.username}')
+
 
 class BoardParticipantFactory(factory.django.DjangoModelFactory):
     class Meta:

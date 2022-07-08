@@ -6,6 +6,9 @@ from faker import Faker
 from tests.factories import UserFactory
 
 class Test_users(TestCase):
+    """
+        Test Users
+    """
     def setUp(self):
         self.testuser = UserFactory(
             username="test1@example.com"

@@ -4,7 +4,7 @@ import pprint
 import pytest
 from freezegun import freeze_time
 from django.test import TestCase
-from goals.models import GoalCategory, Board, Goal, BoardParticipant
+from goals.models import GoalCategory, Board, Goal, BoardParticipant, GoalComment
 from goals.serializers import GoalCategoryListSerializer, BoardListSerializer, BoardSerializer, GoalListSerializer, \
     GoalRUDASerializer, GoalCommentListSerializer
 from tests.factories import UserFactory, GoalCategoryFactory, BoardParticipantFactory, BoardFactory, GoalFactory, \
@@ -269,6 +269,71 @@ class Test_goal(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, serializer.data)
 
+    def test_retrieve_goalcomment_not_participant(self):
+        testuser2 = UserFactory(
+            username="test2@example.com"
+        )
+        self.client.force_login(user=testuser2)
+        # Пользователя указываем всегда так как создается в Factory несколько пользователей.
+        goal_comment = GoalCommentsFactory.create(user=self.testuser)
+        response = self.client.get(f"/goals/goal_comment/{goal_comment.pk}/", content_type='application/json')
+        serializer = GoalCommentListSerializer(goal_comment, many=False)  # Object -> OrderedDict (сериализация)
+        # В данном случае not found так как он не участником доски
+        self.assertEqual(response.status_code, 404)
+
+    @freeze_time("2020-07-07 00:00:00", tz_offset=-3)
+    def test_post_create_goal_comment(self):
+        self.client.force_login(user=self.testuser)
+        text = self.faker.text()
+        # Board создается как связанная фабрика с правами на нее от testuser по умолчанию
+        goal = GoalFactory.create(user=self.testuser)
+        data = {
+            "text": text,
+            "goal": goal.id
+        }
+        response = self.client.post("/goals/goal_comment/create/", data=data)
+        expected_response = {
+            "id": GoalComment.objects.last().pk,
+            "created": '2020-07-07T00:00:00+03:00',
+            "updated": '2020-07-07T00:00:00+03:00',
+            "text": text,
+            "goal": goal.id
+        }
+        self.assertEqual(response.json(), expected_response)
+        self.assertEqual(response.status_code, 201)
+
+    def test_delete_goal_comment(self):
+        self.client.force_login(user=self.testuser)
+        # Пользователя указываем всегда так как создается в Factory несколько пользователей.
+        goal_comment = GoalCommentsFactory.create(user=self.testuser)
+        response = self.client.delete(f"/goals/goal_comment/{goal_comment.pk}/", content_type='application/json')
+        # # TODO Можно проверить на наличие в БД
+        self.assertEqual(response.status_code, 204)
+
+    def test_delete_goalcomment_not_current_user(self):
+        testuser2 = UserFactory(
+            username="test2@example.com"
+        )
+        self.client.force_login(user=testuser2)
+        goal_comment = GoalCommentsFactory.create(user=self.testuser)
+        # Наделяем правами пользователя 2 на существующую доску
+        title = Board.objects.last().title
+        # TODO как ивлечь по id или last в Factory не ясно
+        board = BoardFactory(user=testuser2, title=title)
+        response = self.client.delete(f"/goals/goal_comment/{goal_comment.pk}/", content_type='application/json')
+        self.assertEqual(response.status_code, 403)
+
+        #
+        # boardparticipant = BoardParticipantFactory(user=testuser2, board=board, role=3)
+        # goalcategory = GoalCategoryFactory.create_batch(size=1, user=testuser2)
+        #goal_comment = GoalCommentsFactory.create(user=self.testuser)
+        # board = BoardFactory(title='TestBoard1', user=None)
+        # print(board)
+        # goal_comment = GoalCommentsFactory.create(user=testuser2)
+        #response = self.client.delete(f"/goals/goal_comment/{goal_comment.pk}/", content_type='application/json')
+        # # TODO Можно проверить на наличие в БД
+        #self.assertEqual(response.status_code, 404)
+
 # example without testcase
 
 # https://pytest-factoryboy.readthedocs.io/en/stable/#model-fixture
@@ -291,3 +356,5 @@ class Test_goal(TestCase):
 # print("BoardParticipant", BoardParticipant.objects.all().values())
 # print("Board", Board.objects.all().values())
 # print("GoalCategory", GoalCategory.objects.all().values())
+# print("Goal", Goal.objects.all().values())
+# print("Goalcomment", GoalComment.objects.all().values())
