@@ -120,7 +120,7 @@ class Command(BaseCommand):
             elif state == StateEnum.GET_GOALS:
                 # ......сделать что-то после ввода пользователя в state Get_Goals
                 print('GET_GOALS', self.storage.get_state(tg_user.telegram_chat_id))
-                if message.text.startswith("/"):
+                if not message.text.startswith("/"):
                     self.tg_client.send_message(text='Unknown command!', chat_id=message.chat.id)
 
 
