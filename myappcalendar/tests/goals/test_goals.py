@@ -17,12 +17,14 @@ from users.models import User
 
 
 class Test_goal(TestCase):
+    # В данном тесткейсе не делаем акцент на захешированный пароль в отлиичии от testusers
     def setUp(self):
+        self.faker = Faker()
         self.testuser = UserFactory(
-            username="test1@example.com"
+            username="test1@example.com",
         )
         self.client = APIClient()  # APIClient(enforce_csrf_checks=True)
-        self.faker = Faker()
+
 
     """
     Test Goals Category
@@ -314,28 +316,17 @@ class Test_goal(TestCase):
         testuser2 = UserFactory(
             username="test2@example.com"
         )
+        # Пользователь участник доски, но не автор комментария
         self.client.force_login(user=testuser2)
         goal_comment = GoalCommentsFactory.create(user=self.testuser)
-        # Наделяем правами пользователя 2 на существующую доску
+        # Наделяем правами пользователя testuser2 на существующую доску
         title = Board.objects.last().title
         # TODO как ивлечь по id или last в Factory не ясно
         board = BoardFactory(user=testuser2, title=title)
         response = self.client.delete(f"/goals/goal_comment/{goal_comment.pk}/", content_type='application/json')
         self.assertEqual(response.status_code, 403)
 
-        #
-        # boardparticipant = BoardParticipantFactory(user=testuser2, board=board, role=3)
-        # goalcategory = GoalCategoryFactory.create_batch(size=1, user=testuser2)
-        #goal_comment = GoalCommentsFactory.create(user=self.testuser)
-        # board = BoardFactory(title='TestBoard1', user=None)
-        # print(board)
-        # goal_comment = GoalCommentsFactory.create(user=testuser2)
-        #response = self.client.delete(f"/goals/goal_comment/{goal_comment.pk}/", content_type='application/json')
-        # # TODO Можно проверить на наличие в БД
-        #self.assertEqual(response.status_code, 404)
-
 # example without testcase
-
 # https://pytest-factoryboy.readthedocs.io/en/stable/#model-fixture
 # https://pytest-factoryboy.readthedocs.io/en/stable/#model-fixture
 # @pytest.mark.django_db()

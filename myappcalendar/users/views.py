@@ -18,6 +18,7 @@ def root(request: WSGIRequest) -> JsonResponse:
         "status": "ok"
     })
 
+
 User = get_user_model()
 
 
@@ -87,11 +88,13 @@ class UpdatePassword(UpdateAPIView):
             old_password = serializer.data.get("old_password")
             if not self.object.check_password(old_password):
                 return JsonResponse({"old_password": ["Wrong password."]},
-                                status=status.HTTP_400_BAD_REQUEST)
+                                    status=status.HTTP_400_BAD_REQUEST)
             # set_password also hashes the password that the user will get
             self.object.set_password(serializer.data.get("new_password"))
             self.object.save()
-            return JsonResponse(serializer.data, status=status.HTTP_204_NO_CONTENT)
+            return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+            #return JsonResponse(serializer.data, status=status.HTTP_200_OK)
+
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     # TODO не знаю как разделить put и patch бред тут какой-то одно поле тут меняется и все
@@ -104,9 +107,10 @@ class UpdatePassword(UpdateAPIView):
             old_password = serializer.data.get("old_password")
             if not self.object.check_password(old_password):
                 return JsonResponse({"old_password": ["Wrong password."]},
-                                status=status.HTTP_400_BAD_REQUEST)
+                                    status=status.HTTP_400_BAD_REQUEST)
             # set_password also hashes the password that the user will get
             self.object.set_password(serializer.data.get("new_password"))
             self.object.save()
-            return JsonResponse(serializer.data, status=status.HTTP_204_NO_CONTENT)
+            # return JsonResponse({serializer.data}, status=status.HTTP_204_NO_CONTENT)
+            return JsonResponse(serializer.data, status=status.HTTP_200_OK)
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

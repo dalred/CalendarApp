@@ -4,6 +4,8 @@ from django.contrib.auth import login as login_user, authenticate
 
 from django.views.decorators.csrf import csrf_exempt
 
+from users.models import User
+
 
 @csrf_exempt
 def login(request) -> JsonResponse:

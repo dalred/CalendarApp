@@ -37,7 +37,10 @@ class UserFactory(factory.django.DjangoModelFactory):
         django_get_or_create = ('username',)
 
     username = factory.Sequence(lambda n: f'test{n + 1}@example.com')
-    password = 'password'
+    # Пароль хешицируется, можно задать свой. factory.PostGenerationMethodCall('set_password', password)
+    # password = factory.PostGenerationMethodCall("set_password", "password")
+    # возиникают проблемы при .force_login
+    # password = factory.Faker('password', length=12)
     first_name = factory.Faker('first_name')
     last_name = factory.Faker('last_name')
     email = factory.LazyAttribute(lambda obj: f'{obj.username}')
