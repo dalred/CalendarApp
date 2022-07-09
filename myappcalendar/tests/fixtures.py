@@ -1,7 +1,8 @@
-import json
 from typing import Dict
-
+from unittest.mock import MagicMock
 import pytest
+
+from bot.tg.client import TgClient
 
 
 @pytest.fixture()
@@ -36,3 +37,8 @@ def csrf_user(client, django_user_model) -> Dict:
                            )
     # response.cookies['csrftoken'].value
     return response.json()
+
+
+@pytest.fixture()
+def tgclient():
+    tg_client = MagicMock(return_value=TgClient)

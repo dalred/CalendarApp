@@ -40,6 +40,6 @@
 ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00)
         * [Действия с комментариями](docs/comments.md) 
 ![flutter](https://img.shields.io/badge/boardparticipant-0000FF) ![flutter](https://img.shields.io/badge/owner-00FFFF) ![flutter](https://img.shields.io/badge/writer-C0C0C0) ![flutter](https://img.shields.io/badge/reader-00FF00) ![flutter](https://img.shields.io/badge/currentuser-00FF7F)
-
+* [Действия с телеграмм-ботом](docs/telegram.md) ![flutter](https://img.shields.io/badge/user-green)
 
 > Страница дополняется!   
