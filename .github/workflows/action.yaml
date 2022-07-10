@@ -40,7 +40,6 @@ jobs:
           architecture: 'x64'
       - name: Install dependencies
         run: |
-          cd myappcalendar/django-package
           pip install poetry==1.1.5
           poetry install
       - name: Run tests
@@ -49,4 +48,5 @@ jobs:
           POSTGRES_DB: postgres
           POSTGRES_PASSWORD: a73147b7f8a246965a699b4df153
         run: |
+          cd myappcalendar/django-package
           poetry run sh -c "cd myappcalendar && pytest . -vv"
