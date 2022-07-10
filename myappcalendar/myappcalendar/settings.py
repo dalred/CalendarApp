@@ -154,6 +154,13 @@ DATABASES = {
         "PORT": os.environ.get("DB_PORT", "5432"),
         "USER": os.getenv("DB_USER"),
         "PASSWORD": os.getenv("DB_PASSWORD"),
+        'TEST': {
+            'NAME': 'postgres',
+            "PORT": os.environ.get("DB_PORT", "5432"),
+            "HOST": os.getenv("POSTGRES_DB"),
+            "USER": os.getenv("POSTGRES_USER"),
+            "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        },
     },
 }
 
@@ -217,4 +224,3 @@ LOGGING = {
         },
     },
 }
-
