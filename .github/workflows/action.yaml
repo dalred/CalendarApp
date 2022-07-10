@@ -52,4 +52,6 @@ jobs:
           ls -lav
           cd myappcalendar/django-package
           ls -lav
+          pwd
+          cd ..
           poetry run sh -c "cd myappcalendar && pytest . -vv"
