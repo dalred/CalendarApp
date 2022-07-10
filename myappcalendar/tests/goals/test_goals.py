@@ -1,4 +1,5 @@
 # https://www.django-rest-framework.org/api-guide/serializers/
+import os
 import pprint
 
 import pytest
@@ -263,6 +264,7 @@ class Test_goal(TestCase):
 
     def test_retrieve_goalcomment(self):
         # login
+        print("DB_HOST" , os.environ.get('DB_HOST'))
         self.client.force_login(user=self.testuser)
         # Пользователя указываем всегда так как создается в Factory несколько пользователей.
         goal_comment = GoalCommentsFactory.create(user=self.testuser)
