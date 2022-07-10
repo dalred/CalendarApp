@@ -41,6 +41,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install poetry==1.1.5
+          cd myappcalendar/django-package
           poetry install
       - name: Run tests
         env:
