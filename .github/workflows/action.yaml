@@ -49,9 +49,5 @@ jobs:
           POSTGRES_DB: postgres
           POSTGRES_PASSWORD: a73147b7f8a246965a699b4df153
         run: |
-          ls -lav
           cd myappcalendar/django-package
-          ls -lav
-          pwd
-          cd ..
-          poetry run sh -c "cd myappcalendar && pytest . -vv"
+          poetry run sh -c "cd .. myappcalendar && pytest . -vv"
