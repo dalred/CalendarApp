@@ -21,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        container_name: postgres
         image: postgres:13.0-alpine
         env:
           POSTGRES_USER: postgres
@@ -49,8 +48,8 @@ jobs:
       - name: Run tests
         env:
           DB_USER: postgres
-          POSTGRES_NAME: postgres
+          DB_HOST: postgres
           DB_PASSWORD: a73147b7f8a246965a699b4df153
         run: |
           cd myappcalendar/django-package
-          poetry run sh -c "cd .. && pytest tests/goals/ tests/users/ -vv"
+          poetry run sh -c "echo $DB_HOST cd .. && pytest tests/goals/ tests/users/ -vv"
