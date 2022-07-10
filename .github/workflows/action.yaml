@@ -52,4 +52,5 @@ jobs:
           DB_PASSWORD: a73147b7f8a246965a699b4df153
         run: |
           cd myappcalendar/django-package
-          poetry run sh -c "echo $DB_HOST cd .. && pytest tests/goals/ tests/users/ -vv"
+          echo $DB_HOST $DB_PASSWORD
+          poetry run sh -c "cd .. && pytest tests/goals/ tests/users/ -vv"
