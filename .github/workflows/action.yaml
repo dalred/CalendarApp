@@ -46,7 +46,7 @@ jobs:
       - name: Run tests
         env:
           DB_USER: postgres
-          POSTGRES_NAME: postgres
+          POSTGRES_NAME: localhost
           DB_PASSWORD: a73147b7f8a246965a699b4df153
         run: |
           cd myappcalendar/django-package
