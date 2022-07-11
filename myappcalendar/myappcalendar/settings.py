@@ -156,7 +156,7 @@ DATABASES = {
         "PASSWORD": os.getenv("DB_PASSWORD"),
         'TEST': {
             "NAME": 'postgres',
-            "HOST": 'localhost',
+            "HOST": 'postgres',
             "PORT": os.environ.get("DB_PORT", "5432"),
             "USER": os.environ.get("POSTGRES_USER"),
             "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
