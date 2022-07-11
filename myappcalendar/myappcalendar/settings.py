@@ -149,18 +149,11 @@ WSGI_APPLICATION = 'myappcalendar.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv("POSTGRES_NAME"),
-        "HOST": os.getenv("DB_HOST"),
+        "NAME": os.environ.get("POSTGRES_DB"),
+        "HOST": '127.0.0.1',
         "PORT": os.environ.get("DB_PORT", "5432"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        'TEST': {
-            "NAME": 'postgres',
-            "HOST": 'postgres',
-            "PORT": os.environ.get("DB_PORT", "5432"),
-            "USER": os.environ.get("POSTGRES_USER"),
-            "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-        },
+        "USER": os.environ.get("POSTGRES_USER"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD")
     },
 }
 
