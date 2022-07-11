@@ -53,4 +53,4 @@ jobs:
         run: |
           docker container ls -a
           cd myappcalendar/django-package
-          poetry run sh -c "cd .. && pytest tests/goals/test_goals.py::Test_goal::test_retrieve_goalcomment -vv -rP"
+          poetry run sh -c "cd .. && pytest /tests/goals/ /tests/users/ -vv"
