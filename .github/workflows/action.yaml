@@ -51,5 +51,6 @@ jobs:
           POSTGRES_DB: postgres
           POSTGRES_PASSWORD: a73147b7f8a246965a699b4df153
         run: |
+          docker container ls -a
           cd myappcalendar/django-package
           poetry run sh -c "cd .. && pytest tests/goals/test_goals.py::Test_goal::test_retrieve_goalcomment -vv -rP"
