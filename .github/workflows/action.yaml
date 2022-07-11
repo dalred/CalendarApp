@@ -32,5 +32,5 @@ jobs:
           script: |
             echo homepath $HOME
             cd ${{secrets.NAME_APP}}
-            echo ${{ SSH_USERNAME }}
+            echo ${{ env.SSH_USERNAME }}
             echo $SSH_PASSWORD
