@@ -17,93 +17,20 @@ env:
 
 
 jobs:
-  tests:
+  testssss:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:13.0-alpine
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: postgres
-          POSTGRES_PASSWORD: a73147b7f8a246965a699b4df153
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.9'
-          architecture: 'x64'
-      - name: Install dependencies
-        run: |
-          pip install poetry
-          cd myappcalendar/django-package
-          poetry install
-      - name: Run tests
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: postgres
-          POSTGRES_PASSWORD: a73147b7f8a246965a699b4df153
-        run: |
-          cd myappcalendar/django-package
-          poetry run sh -c "cd .. && pytest tests/goals/ tests/users/ -vv"
-  build_and_push:
-    runs-on: ubuntu-latest
-    needs: tests
-    steps:
-      - name: clone code
-        uses: actions/checkout@v2
-      - name: Echo gitHubname and repo
-        run: echo ${{ github.repository }}/${{ github.ref_name }}/${{secrets.NAME_APP}}
-      - name: 'render .env file'
-        run: |
-          cat ci.env | envsubst > myappcalendar/.env
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: ./myappcalendar
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{secrets.NAME_APP}}:${{ github.ref_name }}-version-${{ github.run_id }}
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build_and_push
     env:
       SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+      SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
     steps:
-      - name: clone code
-        uses: actions/checkout@v2
-      - name: render configs
-        run: |
-          mkdir deploy
-          cat docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
-      - name: clone files to server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: $SSH_USERNAME
-          password: ${{ secrets.SSH_PASSWORD }}
-          source: "deploy/docker-compose.yaml"
-          target: ${{secrets.NAME_APP}}
-          strip_components: 1
       - name: run docker-compose
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: $SSH_USERNAME
-          password: ${{ secrets.SSH_PASSWORD }}
+          password: $SSH_PASSWORD
           script: |
             echo homepath $HOME
             cd ${{secrets.NAME_APP}}
-            echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose down --rmi local -v
-            echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose up --build -d
+            echo ${{ SSH_USERNAME }}
+            echo $SSH_PASSWORD
