@@ -2,7 +2,7 @@ name: Build and deploy action
 on:
   push:
     branches:
-      - 'main'
+      - 'test'
     paths-ignore:
       - '**.md'
       - '**/tests/**'
