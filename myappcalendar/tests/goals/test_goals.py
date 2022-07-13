@@ -46,7 +46,6 @@ class Test_goal(TestCase):
         serializer = GoalCategoryListSerializer(goalcategory, many=True)  # Object -> OrderedDict (сериализация)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, serializer.data)  # assert response.data["results"]
-        self.assertFalse()
 
     def test_not_authorized_list_goal_categories(self):
         """
