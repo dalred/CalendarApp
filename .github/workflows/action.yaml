@@ -5,7 +5,7 @@ on:
       - 'test'
     paths-ignore:
       - '**.md'
-      - '**/tests/**'
+     # - '**/tests/**'
      # - '**action.yaml'
 env:
   DB_USER: ${{ secrets.DB_USER }}
