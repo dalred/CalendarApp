@@ -6,6 +6,8 @@ from django.test import TestCase
 # pytest tests/users/test_users.py -vv
 # pytest tests/users/test_users.py -vv -rx|-rP
 # pytest tests/users/test_users.py::test_post_users -vv
+# pytest tests/goals/test_goals.py::Test_goal::test_boardlist -vv
+# pytest . -vv
 from faker import Faker
 
 
