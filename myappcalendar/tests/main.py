@@ -11,6 +11,7 @@ from django.test import TestCase
 from faker import Faker
 
 
+
 class UseFactoryClassTestCase(TestCase):
     def setUp(self):
         self.client = APIClient()  # APIClient(enforce_csrf_checks=True)
