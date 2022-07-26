@@ -60,6 +60,9 @@ class GetUpdatesResponse:
     ok: bool
     result: List[UpdateObj]
 
+    class Meta:
+        unknown = EXCLUDE
+
 
 @dataclass
 class SendMessageResponse:
