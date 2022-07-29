@@ -2,7 +2,7 @@ name: Build and deploy action
 on:
   push:
     branches:
-      - 'main'
+      - 'withoutdbindocker'
     paths-ignore:
       - '**.md'
       - '**/tests/**'
