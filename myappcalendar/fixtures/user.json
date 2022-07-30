@@ -5,7 +5,7 @@
     "fields": {
       "username": "test@teamdev.ru",
       "email": "test@teamdev.ru",
-      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "password": "pbkdf2_sha256$320000$9mIaart7kf7SItrixgffMC$Jp/d/bI0aMbW6ck9VlJsC49E4JVm2BdTqYPLaMW8sNo=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "user",
       "first_name": "Иван",
@@ -19,7 +19,7 @@
     "fields": {
       "username": "test2@teamdev.ru",
       "email": "test2@teamdev.ru",
-      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "password": "pbkdf2_sha256$320000$9mIaart7kf7SItrixgffMC$Jp/d/bI0aMbW6ck9VlJsC49E4JVm2BdTqYPLaMW8sNo=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "user",
       "first_name": "Петр",
@@ -33,7 +33,7 @@
     "fields": {
       "username": "test3@teamdev.ru",
       "email": "test3@teamdev.ru",
-      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "password": "pbkdf2_sha256$320000$9mIaart7kf7SItrixgffMC$Jp/d/bI0aMbW6ck9VlJsC49E4JVm2BdTqYPLaMW8sNo=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "user",
       "first_name": "Петр",
@@ -47,7 +47,7 @@
     "fields": {
       "username": "test4@teamdev.ru",
       "email": "test4@teamdev.ru",
-      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "password": "pbkdf2_sha256$320000$9mIaart7kf7SItrixgffMC$Jp/d/bI0aMbW6ck9VlJsC49E4JVm2BdTqYPLaMW8sNo=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "user",
       "first_name": "Сергей",
@@ -61,7 +61,7 @@
     "fields": {
       "username": "test5@teamdev.ru",
       "email": "test5@teamdev.ru",
-      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "password": "pbkdf2_sha256$320000$9mIaart7kf7SItrixgffMC$Jp/d/bI0aMbW6ck9VlJsC49E4JVm2BdTqYPLaMW8sNo=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "user",
       "first_name": "Сергей",
@@ -75,7 +75,7 @@
     "fields": {
       "username": "test6@teamdev.ru",
       "email": "test6@teamdev.ru",
-      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "password": "pbkdf2_sha256$320000$9mIaart7kf7SItrixgffMC$Jp/d/bI0aMbW6ck9VlJsC49E4JVm2BdTqYPLaMW8sNo=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "user",
       "first_name": "Сергей",
@@ -89,7 +89,7 @@
     "fields": {
       "username": "admin@teamdev.ru",
       "email": "admin@teamdev.ru",
-      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "password": "pbkdf2_sha256$320000$9mIaart7kf7SItrixgffMC$Jp/d/bI0aMbW6ck9VlJsC49E4JVm2BdTqYPLaMW8sNo=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "admin",
       "first_name": "Админ",
@@ -103,7 +103,7 @@
     "fields": {
       "username": "test8@teamdev.ru",
       "email": "test8@teamdev.ru",
-      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "password": "pbkdf2_sha256$320000$9mIaart7kf7SItrixgffMC$Jp/d/bI0aMbW6ck9VlJsC49E4JVm2BdTqYPLaMW8sNo=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "user",
       "first_name": "Сергей",
@@ -117,7 +117,7 @@
     "fields": {
       "username": "test9@teamdev.ru",
       "email": "test9@teamdev.ru",
-      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "password": "pbkdf2_sha256$320000$9mIaart7kf7SItrixgffMC$Jp/d/bI0aMbW6ck9VlJsC49E4JVm2BdTqYPLaMW8sNo=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "user",
       "first_name": "Сергей",
@@ -131,7 +131,7 @@
     "fields": {
       "username": "test10@teamdev.ru",
       "email": "test10@teamdev.ru",
-      "password": "pbkdf2_sha256$320000$RLQjGy9tbpCuEA0FrYAIni$KIG0H0JGM8Sz/EhG6WPwgPjxwEhBTVio/hrFG6pnO/A=",
+      "password": "pbkdf2_sha256$320000$9mIaart7kf7SItrixgffMC$Jp/d/bI0aMbW6ck9VlJsC49E4JVm2BdTqYPLaMW8sNo=",
       "last_login": "2022-02-20 13:34:16.332479+03:00",
       "role": "user",
       "first_name": "Сергей",
