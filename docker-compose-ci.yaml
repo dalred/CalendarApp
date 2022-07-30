@@ -8,7 +8,6 @@ services:
       - "8000:8000"
 #    volumes:
 #      - ./$NAME_APP:/code/
-        condition: service_healthy
     command: /bin/bash -c "./runserver.sh"
   bot:
     image: dalred/$NAME_APP:$GITHUB_REF_NAME-version-$GITHUB_RUN_ID
