@@ -77,3 +77,4 @@ jobs:
               cd ${{secrets.NAME_APP}}
               echo ${{ env.SSH_PASSWORD }} | sudo -S docker-compose down --rmi local -v
               echo ${{ env.SSH_PASSWORD }} | sudo -S docker-compose up --build -d
+            fi
