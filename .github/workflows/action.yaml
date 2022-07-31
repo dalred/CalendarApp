@@ -108,4 +108,4 @@ jobs:
             echo homepath $HOME
             cd ${{secrets.NAME_APP}}
             echo ${{ env.SSH_PASSWORD }} | sudo -S docker-compose down --rmi local -v
-            echo ${{ env.SSH_PASSWORD }} | docker-compose -f docker-compose.yaml --project-name ${{ env.NAME_APP }} up --detach --timeout 120
+            echo ${{ env.SSH_PASSWORD }} | sudo -S docker-compose -f docker-compose.yaml --project-name ${{ env.NAME_APP }} up --detach --timeout 120
