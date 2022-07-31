@@ -2,7 +2,6 @@ version: "3.9"
 services:
   api:
     #myappcalendar
-    container_name: api
     image: dalred/$NAME_APP:$GITHUB_REF_NAME-version-$GITHUB_RUN_ID
     ports:
       - "8000:8000"
@@ -31,7 +30,6 @@ services:
     depends_on:
       - api
   db:
-    container_name: postgres_$NAME_APP
     image: postgres:12.4-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data
