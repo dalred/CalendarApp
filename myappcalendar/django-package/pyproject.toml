@@ -20,6 +20,8 @@ social-auth-app-django = "^5.0.0"
 python-social-auth = "^0.3.6"
 marshmallow-dataclass = "^8.5.8"
 freezegun = "^1.2.1"
+testit-api-client = "^1.1.1"
+testit-adapter-pytest = "^1.1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

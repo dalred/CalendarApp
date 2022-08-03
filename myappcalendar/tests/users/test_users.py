@@ -1,5 +1,6 @@
 import json
-
+import pytest
+import testit
 from users.models import User
 from users.serializers import UserCreateSerializer, UserCurrentSerializer
 from rest_framework.test import APIClient
@@ -24,6 +25,7 @@ class Test_users(TestCase):
         self.testuser.save()
         self.client = APIClient()  # APIClient(enforce_csrf_checks=True)
 
+
     def test_check_post_user_create_serializer_data(self):
         username = self.faker.user_name()
         password = self.password
@@ -46,6 +48,7 @@ class Test_users(TestCase):
         self.assertEqual(response.json(), expected_response)
         self.assertTrue(serializer.is_valid(raise_exception=True))
 
+
     def test_profile_user_data(self):
         self.client.force_login(user=self.testuser)
         response = self.client.get("/core/profile/", content_type='application/json')
@@ -65,6 +68,7 @@ class Test_users(TestCase):
         }
         self.assertEqual(response.json(), expected_response)
         self.assertEqual(response.status_code, 200)
+
 
     def test_delete_user(self):
         self.client.force_login(user=self.testuser)
@@ -90,3 +94,20 @@ class Test_users(TestCase):
         # внесли изменения status code 200
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), data)
+
+    @testit.title('users autotest')
+    @testit.description('Автотесты сущности пользователь')
+    @testit.displayName('Автотест для пользователей')
+    @testit.externalID('all_autotest_users')
+    def test_users_all_testit(self):
+        with testit.step('test_check_post_user_create_serializer_data'):
+            self.test_check_post_user_create_serializer_data()
+        with testit.step('test_profile_user_data'):
+            self.test_profile_user_data()
+        with testit.step('test_post_login_user'):
+            self.test_post_login_user()
+        with testit.step('test_delete_user'):
+            self.test_delete_user()
+        with testit.step('test_change_password'):
+            self.test_change_password()
+
