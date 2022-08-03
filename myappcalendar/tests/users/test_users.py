@@ -110,4 +110,3 @@ class Test_users(TestCase):
             self.test_delete_user()
         with testit.step('test_change_password'):
             self.test_change_password()
-
