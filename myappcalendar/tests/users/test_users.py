@@ -95,10 +95,11 @@ class Test_users(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), data)
 
+
     @testit.title('users autotest')
     @testit.description('Автотесты сущности пользователь')
     @testit.displayName('Автотест для пользователей')
-    @testit.externalID('all_autotest_users')
+    @testit.externalID('all_autotest_users_')
     def test_users_all_testit(self):
         with testit.step('test_check_post_user_create_serializer_data'):
             self.test_check_post_user_create_serializer_data()
@@ -110,3 +111,4 @@ class Test_users(TestCase):
             self.test_delete_user()
         with testit.step('test_change_password'):
             self.test_change_password()
+
