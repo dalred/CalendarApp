@@ -99,7 +99,7 @@ class Test_users(TestCase):
     @testit.title('users autotest')
     @testit.description('Автотесты сущности пользователь')
     @testit.displayName('Автотест для пользователей')
-    @testit.externalID('all_autotest_users_')
+    @testit.externalID('all_autotest_users')
     def test_users_all_testit(self):
         with testit.step('test_check_post_user_create_serializer_data'):
             self.test_check_post_user_create_serializer_data()
