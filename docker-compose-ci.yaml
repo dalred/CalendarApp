@@ -5,8 +5,10 @@ services:
     image: dalred/$NAME_APP:$GITHUB_REF_NAME-version-$GITHUB_RUN_ID
     ports:
       - "8000:8000"
-#    volumes:
-#      - ./$NAME_APP:/code/
+    #    volumes:
+    #      - ./$NAME_APP:/code/
+    networks:
+      todoapp_network:
     depends_on:
       db:
         condition: service_healthy
@@ -18,6 +20,8 @@ services:
         condition: service_healthy
       api:
         condition: service_started
+    networks:
+      todoapp_network:
     command:
       - bash
       - -c
@@ -27,6 +31,8 @@ services:
     image: sermalenk/skypro-front:lesson-38
     ports:
       - "8036:80"
+    networks:
+      todoapp_network:
     depends_on:
       - api
   db:
@@ -45,7 +51,12 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
+    networks:
+      todoapp_network:
+
 volumes:
   postgres_data:
 
+networks:
+  todoapp_network:
 
