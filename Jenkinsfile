@@ -1,9 +1,17 @@
+
 pipeline {
     agent {
         docker {
-            image 'dalred/todoapp:main-version-2793140892'
-            args '-p 8081:8081 --network todoapp_mynetwork -e DB_HOST=db -e POSTGRES_PASSWORD=djangoappuserdb -e PORT=5432, -e POSTGRES_USER=djangoappuserdb -e POSTGRES_DB=djangoappuserdb'
+            image 'dalred/todoapp:main-version-2793758665'
+            args '-p 8081:8081 --network todoapp_default -e DB_HOST=db -e POSTGRES_PASSWORD=djangoappuserdb -e PORT=5432, -e POSTGRES_USER=djangoappuserdb -e POSTGRES_DB=djangoappuserdb'
         }
+    }
+    environment {
+        TEST_RUN_ID = "$TEST_RUN_ID"
+        URL_TESTIT = "$URL_TESTIT"
+        PRIVATE_TOKEN = "$PRIVATE_TOKEN_TESTIT"
+        CONFIGURATIONID = "$CONFIGURATIONID_TESTIT"
+
     }
     stages {
         stage('git') {
@@ -13,7 +21,8 @@ pipeline {
         }
         stage('tests') {
             steps {
-                sh "cd myappcalendar && pytest tests/users/ -vv -k 'not testit'"
+                sh "cd myappcalendar && pytest tests/users/test_users.py::Test_users::run_tests_it --testit --testrunid $TEST_RUN_ID --testit_url $URL_TESTIT --privatetoken $PRIVATE_TOKEN --configurationid $CONFIGURATIONID"
+
             }
         }
     }
@@ -23,4 +32,6 @@ pipeline {
       }
   }
 }
+
+
 
