@@ -21,7 +21,7 @@ pipeline {
         }
         stage('tests') {
             steps {
-                sh "cd myappcalendar && pytest tests/users/test_users.py::Test_users::run_tests_it --testit --testrunid $TEST_RUN_ID --testit_url $URL_TESTIT --privatetoken $PRIVATE_TOKEN --configurationid $CONFIGURATIONID"
+                sh "cd myappcalendar && pytest tests/users/test_users.py::Test_users::all_autotest_users --testit --testrunid $TEST_RUN_ID --testit_url $URL_TESTIT --privatetoken $PRIVATE_TOKEN --configurationid $CONFIGURATIONID"
 
             }
         }
