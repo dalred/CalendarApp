@@ -8,7 +8,7 @@ services:
     #    volumes:
     #      - ./$NAME_APP:/code/
     networks:
-      todoapp_network:
+      mynetwork:
     depends_on:
       db:
         condition: service_healthy
@@ -21,7 +21,7 @@ services:
       api:
         condition: service_started
     networks:
-      todoapp_network:
+      mynetwork:
     command:
       - bash
       - -c
@@ -32,7 +32,7 @@ services:
     ports:
       - "8036:80"
     networks:
-      todoapp_network:
+      network:
     depends_on:
       - api
   db:
@@ -52,11 +52,11 @@ services:
       retries: 5
       start_period: 10s
     networks:
-      todoapp_network:
+      mynetwork:
 
 volumes:
   postgres_data:
 
 networks:
-  todoapp_network:
+  mynetwork:
 
