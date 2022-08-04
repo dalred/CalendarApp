@@ -32,7 +32,7 @@ services:
     ports:
       - "8036:80"
     networks:
-      network:
+      mynetwork:
     depends_on:
       - api
   db:
