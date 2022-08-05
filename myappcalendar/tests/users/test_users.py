@@ -9,7 +9,6 @@ from faker import Faker
 from tests.factories import UserFactory
 import pprint
 
-
 class Test_users(TestCase):
     """
         Test Users
@@ -24,7 +23,6 @@ class Test_users(TestCase):
         self.testuser.set_password(self.password)
         self.testuser.save()
         self.client = APIClient()  # APIClient(enforce_csrf_checks=True)
-
 
     def test_check_post_user_create_serializer_data(self):
         username = self.faker.user_name()
@@ -48,7 +46,6 @@ class Test_users(TestCase):
         self.assertEqual(response.json(), expected_response)
         self.assertTrue(serializer.is_valid(raise_exception=True))
 
-
     def test_profile_user_data(self):
         self.client.force_login(user=self.testuser)
         response = self.client.get("/core/profile/", content_type='application/json')
@@ -68,7 +65,6 @@ class Test_users(TestCase):
         }
         self.assertEqual(response.json(), expected_response)
         self.assertEqual(response.status_code, 200)
-
 
     def test_delete_user(self):
         self.client.force_login(user=self.testuser)
@@ -95,8 +91,7 @@ class Test_users(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), data)
 
-
-    @testit.title('users autotest')
+    @testit.title('users autotest for ann')
     @testit.description('Автотесты сущности пользователь')
     @testit.displayName('Автотест для пользователей')
     @testit.externalID('all_autotest_users')
@@ -111,4 +106,3 @@ class Test_users(TestCase):
             self.test_delete_user()
         with testit.step('test_change_password'):
             self.test_change_password()
-
