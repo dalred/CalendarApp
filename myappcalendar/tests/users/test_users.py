@@ -9,6 +9,8 @@ from faker import Faker
 from tests.factories import UserFactory
 import pprint
 
+
+
 class Test_users(TestCase):
     """
         Test Users
@@ -91,10 +93,10 @@ class Test_users(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), data)
 
-    @testit.title('users autotest for ann')
+    @testit.title('users')
     @testit.description('Автотесты сущности пользователь')
     @testit.displayName('Автотест для пользователей')
-    @testit.externalID('all_autotest_users')
+    @testit.externalID('test users')
     def test_users_all_testit(self):
         with testit.step('test_check_post_user_create_serializer_data'):
             self.test_check_post_user_create_serializer_data()

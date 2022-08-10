@@ -1,7 +1,7 @@
 # https://www.django-rest-framework.org/api-guide/serializers/
 import os
 import pprint
-
+import testit
 import pytest
 from freezegun import freeze_time
 from django.test import TestCase
@@ -46,6 +46,8 @@ class Test_goal(TestCase):
         serializer = GoalCategoryListSerializer(goalcategory, many=True)  # Object -> OrderedDict (сериализация)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, serializer.data)  # assert response.data["results"]
+        #Добавляем выход пользователя.
+        self.client.logout()
 
     def test_not_authorized_list_goal_categories(self):
         """
@@ -54,6 +56,7 @@ class Test_goal(TestCase):
         """
         goalcategory = GoalCategoryFactory.create(user=self.testuser)
         response = self.client.get(f"/goals/goal_category/{goalcategory.pk}/", content_type='application/json')
+        pprint.pprint(response.json())
         assert response.status_code == 403
 
     def test_retrieve_goal_categories(self):
@@ -63,6 +66,7 @@ class Test_goal(TestCase):
         serializer = GoalCategoryListSerializer(goalcategory, many=False)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, serializer.data)  # Object -> OrderedDict (сериализация)
+        self.client.logout()
 
     def test_delete_goal_category(self):
         self.client.force_login(user=self.testuser)
@@ -70,6 +74,7 @@ class Test_goal(TestCase):
         response = self.client.delete(f"/goals/goal_category/{goalcategory.pk}/", content_type='application/json')
         # TODO Можно проверить на наличие в БД
         self.assertEqual(response.status_code, 204)
+        self.client.logout()
 
     @freeze_time("2020-07-07 00:00:00", tz_offset=-3)
     def test_post_category_goal(self):
@@ -90,6 +95,7 @@ class Test_goal(TestCase):
         }
         self.assertEqual(response.json(), expected_response)
         self.assertEqual(response.status_code, 201)
+        self.client.logout()
 
     def test_not_participant_post_category_goal(self):
         board = BoardFactory.create()
@@ -103,6 +109,7 @@ class Test_goal(TestCase):
         self.client.force_login(user=testuser2)
         response = self.client.post("/goals/goal_category/create/", data=data)
         assert response.status_code == 403
+        self.client.logout()
 
     """
         Test boards
@@ -326,6 +333,24 @@ class Test_goal(TestCase):
         board = BoardFactory(user=testuser2, title=title)
         response = self.client.delete(f"/goals/goal_comment/{goal_comment.pk}/", content_type='application/json')
         self.assertEqual(response.status_code, 403)
+
+    @testit.title('категории в целях')
+    @testit.description('Автотест для сущности категории цели')
+    @testit.displayName('Автотест для категорий')
+    @testit.externalID('Goals Category')
+    def test_goals_all_testit(self):
+        with testit.step('test_create_category_goals'):
+            self.test_create_category_goals()
+        with testit.step('test_profile_user_data'):
+            self.test_not_authorized_list_goal_categories()
+        with testit.step('test_retrieve_goal_categories'):
+            self.test_retrieve_goal_categories()
+        with testit.step('test_delete_goal_category'):
+            self.test_delete_goal_category()
+        with testit.step('test_post_category_goal'):
+            self.test_post_category_goal()
+        with testit.step('test_not_participant_post_category_goal'):
+            self.test_not_participant_post_category_goal()
 
 # example without testcase
 # https://pytest-factoryboy.readthedocs.io/en/stable/#model-fixture
