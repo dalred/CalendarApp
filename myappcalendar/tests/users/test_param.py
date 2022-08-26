@@ -17,7 +17,7 @@ def test_param_testit(login, password, expected_login_password):
 @testit.description('Автотесты сущности пользователь')
 @testit.displayName('Автотест параметризованный')
 @testit.externalID('Тестовый параметризованный тест2')
-@pytest.mark.skip(reason="bug in a 3rd party library")
+#@pytest.mark.skip(reason="bug in a 3rd party library")
 @pytest.mark.parametrize("login, password, expected_login_password", [("testit@testit.ru", "123", "testit@testit.ru_123")])
 def test_param2_testit(login, password, expected_login_password):
     with testit.step('Первый шаг'):
