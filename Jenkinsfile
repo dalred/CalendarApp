@@ -2,7 +2,7 @@
 pipeline {
     agent {
         docker {
-            image 'dalred/todoapp:main-version-2793758665'
+            image 'dalred/todoapp:main-version-2972219117'
             args '--network todoapp_mynetwork -e DB_HOST=db -e POSTGRES_PASSWORD=djangoappuserdb -e POSTGRES_PORT=5432 -e POSTGRES_USER=djangoappuserdb -e POSTGRES_DB=djangoappuserdb'
         }
     }
