@@ -7,9 +7,9 @@
 
 ## Содержание
 
-![flutter](https://img.shields.io/badge/Cайт-important) http://dalforcustomers.ga
+![flutter](https://img.shields.io/badge/Cайт-important) http://dalforcustomer.ga:8036
 
-![flutter](https://img.shields.io/badge/Swagger-important) http://dalforcustomers.ga:8000/docs
+![flutter](https://img.shields.io/badge/Swagger-important) http://dalforcustomer.ga:8000/docs/
 
 Пометки в документации:
 
