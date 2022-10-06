@@ -10,6 +10,9 @@
 ![flutter](https://img.shields.io/badge/Cайт-important) http://dalforcustomer.ga:8036
 
 ![flutter](https://img.shields.io/badge/Swagger-important) http://dalforcustomer.ga:8000/docs/
+> test data
+> login: test@testit.ru
+> password: testit123
 
 Пометки в документации:
 
